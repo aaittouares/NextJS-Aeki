@@ -1,4 +1,4 @@
-import { cn } from '@/shared/lib/utils'
+import { cn } from '@/shared/shadcn/lib/utils'
 
 function Container({
   children,
@@ -13,4 +13,5 @@ function Container({
     </div>
   )
 }
+
 export default Container

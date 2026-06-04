@@ -13,10 +13,10 @@
   "iconLibrary": "hugeicons",
   "rtl": false,
   "aliases": {
-    "components": "@/components",
-    "utils": "@/shared/lib/utils",
-    "ui": "@/shared/ui",
-    "lib": "@/shared/lib",
+    "components": "@/shared/ui",
+    "utils": "@/shared/shadcn/lib/utils",
+    "ui": "@/shared/shadcn/ui",
+    "lib": "@/shared/shadcn/lib",
     "hooks": "@/hooks"
   },
   "menuColor": "default",

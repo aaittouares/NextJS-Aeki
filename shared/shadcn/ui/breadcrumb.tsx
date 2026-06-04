@@ -2,7 +2,7 @@ import * as React from 'react'
 import { mergeProps } from '@base-ui/react/merge-props'
 import { useRender } from '@base-ui/react/use-render'
 
-import { cn } from '@/shared/lib/utils'
+import { cn } from '@/shared/shadcn/lib/utils'
 import { HugeiconsIcon } from '@hugeicons/react'
 import {
   ArrowRight01Icon,
