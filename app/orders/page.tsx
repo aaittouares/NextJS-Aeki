@@ -1,4 +1,1 @@
-function OrdersPage() {
-  return <div>OrdersPage</div>
-}
-export default OrdersPage
+export { OrdersPage as default } from '@/pages-fsd/orders'

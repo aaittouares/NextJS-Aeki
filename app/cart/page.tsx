@@ -1,4 +1,1 @@
-function CartPage() {
-  return <div>CartPage</div>
-}
-export default CartPage
+export { CartPage as default } from '@/pages-fsd/cart'

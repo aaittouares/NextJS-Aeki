@@ -1,4 +1,1 @@
-function ReviewsPage() {
-  return <div>ReviewsPage</div>
-}
-export default ReviewsPage
+export { ReviewsPage as default } from '@/pages-fsd/reviews'

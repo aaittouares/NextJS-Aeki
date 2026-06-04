@@ -1,4 +1,1 @@
-function FavoritesPage() {
-  return <div>FavoritesPage</div>
-}
-export default FavoritesPage
+export { FavoritesPage as default } from '@/pages-fsd/favourites'
