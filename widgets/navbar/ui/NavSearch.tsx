@@ -1,4 +1,4 @@
-import { Input } from '@/shared/shadcn/ui/input'
+import { Input } from '@/shared/ui/shadcn/input'
 
 function NavSearch() {
   return (

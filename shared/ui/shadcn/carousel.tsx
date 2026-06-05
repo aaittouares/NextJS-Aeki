@@ -5,7 +5,7 @@ import useEmblaCarousel, {
   type UseEmblaCarouselType,
 } from 'embla-carousel-react'
 
-import { cn } from '@/shared/shadcn/lib/utils'
+import { cn } from '@/shared/lib/shadcn/utils'
 import { Button } from '@/shared/shadcn/ui/button'
 import { HugeiconsIcon } from '@hugeicons/react'
 import { ArrowLeft01Icon, ArrowRight01Icon } from '@hugeicons/core-free-icons'

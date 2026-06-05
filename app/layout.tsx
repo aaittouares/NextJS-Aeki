@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { Geist, Geist_Mono, Figtree } from 'next/font/google'
 import './globals.css'
-import { cn } from '@/shared/shadcn/lib/utils'
+import { cn } from '@/shared/lib/shadcn/utils'
 import Container from '@/shared/ui/Container'
 import Navbar from '@/widgets/navbar/ui/Navbar'
 import Providers from './providers'

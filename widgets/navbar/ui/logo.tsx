@@ -1,4 +1,4 @@
-import { Button } from '@/shared/shadcn/ui/button'
+import { Button } from '@/shared/ui/shadcn/button'
 import Link from 'next/link'
 import { VscCode } from 'react-icons/vsc'
 

@@ -1,12 +1,12 @@
 'use client'
 
-import { Button } from '@/shared/shadcn/ui/button'
+import { Button } from '@/shared/ui/shadcn/button'
 import {
   DropdownMenu,
   DropdownMenuTrigger,
   DropdownMenuContent,
   DropdownMenuItem,
-} from '@/shared/shadcn/ui/dropdown-menu'
+} from '@/shared/ui/shadcn/dropdown-menu'
 
 import { SunIcon, MoonIcon, Sun03Icon } from '@hugeicons/core-free-icons'
 import { HugeiconsIcon } from '@hugeicons/react'
