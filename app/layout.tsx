@@ -4,6 +4,7 @@ import './globals.css'
 import { cn } from '@/shared/shadcn/lib/utils'
 import Container from '@/shared/ui/Container'
 import Navbar from '@/widgets/navbar/ui/Navbar'
+import Providers from './providers'
 
 const figtree = Figtree({ subsets: ['latin'], variable: '--font-sans' })
 
@@ -38,10 +39,13 @@ export default function RootLayout({
         'font-sans',
         figtree.variable,
       )}
+      suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col">
-        <Navbar />
-        <Container className="py-20">{children}</Container>
+        <Providers>
+          <Navbar />
+          <Container className="py-20">{children}</Container>
+        </Providers>
       </body>
     </html>
   )

@@ -2,7 +2,7 @@ import Container from '@/shared/ui/Container'
 import Logo from './Logo'
 import NavSearch from './NavSearch'
 import CartButton from './CartButton'
-import DarkMode from './DarkMode'
+import ToggleTheme from './ToggleTheme'
 import LinksDropdown from './LinksDropdown'
 
 function Navbar() {
@@ -13,7 +13,7 @@ function Navbar() {
         <NavSearch />
         <div className="flex items-center gap-4">
           <CartButton />
-          <DarkMode />
+          <ToggleTheme />
           <LinksDropdown />
         </div>
       </Container>
