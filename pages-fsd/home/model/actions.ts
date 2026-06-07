@@ -8,11 +8,3 @@ export const fetchFeaturedProducts = async () => {
   })
   return products
 }
-
-export const fetchAllProducts = () => {
-  return prisma.product.findMany({
-    orderBy: {
-      createdAt: 'desc',
-    },
-  })
-}

@@ -5,7 +5,13 @@ import { fetchFeaturedProducts } from '../model/actions'
 
 async function FeaturedProducts() {
   const products = await fetchFeaturedProducts()
-  if (products.length === 0) return <EmptyList />
+  if (products.length === 0)
+    return (
+      <section className="pt-24">
+        <SectionTitle text="featured products" />
+        <EmptyList />
+      </section>
+    )
   return (
     <section className="pt-24">
       <SectionTitle text="featured products" />
