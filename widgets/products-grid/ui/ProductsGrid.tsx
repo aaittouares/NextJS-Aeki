@@ -2,7 +2,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { Card, CardContent } from '@/shared/ui/shadcn/card'
 import { formatCurrency } from '@/shared/lib/format-currency'
-import FavoriteToggleButton from './FavoriteToggleButton'
+import FavoriteToggleButton from '@/features/add-favorite/ui/FavoriteToggleButton'
 
 import { Product } from '@/shared/lib/prisma/generated/client'
 

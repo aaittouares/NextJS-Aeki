@@ -1,7 +1,7 @@
 import { formatCurrency } from '@/shared/lib/format-currency'
 import { Product } from '@/shared/lib/prisma/generated/client'
 import { Card, CardContent } from '@/shared/ui/shadcn/card'
-import FavoriteToggleButton from '@/widgets/products-grid/ui/FavoriteToggleButton'
+import FavoriteToggleButton from '@/features/add-favorite/ui/FavoriteToggleButton'
 import Image from 'next/image'
 import Link from 'next/link'
 
