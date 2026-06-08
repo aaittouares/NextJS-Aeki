@@ -1,4 +1,4 @@
-import { fetchProductsBySearch } from '@/pages-fsd/products/model/actions'
+import { fetchProductsBySearch } from '@/pages-fsd/product/list/model/actions'
 import { Button } from '@/shared/ui/shadcn/button'
 import { Separator } from '@/shared/ui/shadcn/separator'
 import ProductsGrid from '@/widgets/products-grid/ui/ProductsGrid'

@@ -1,4 +1,4 @@
-import { SingleProductPage } from '@/pages-fsd/single-product'
+import { SingleProductPage } from '@/pages-fsd/product/detail'
 
 export async function singleProduct({
   params,

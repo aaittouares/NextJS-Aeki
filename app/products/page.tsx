@@ -1,4 +1,4 @@
-import { ProductsPage } from '@/pages-fsd/products'
+import { ProductsPage } from '@/pages-fsd/product/list'
 
 export default async function Products({
   searchParams,
