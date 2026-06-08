@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Geist, Geist_Mono, Figtree } from 'next/font/google'
 import './globals.css'
+import { ClerkProvider } from '@clerk/nextjs'
 import { cn } from '@/shared/lib/shadcn/utils'
 import Container from '@/shared/ui/Container'
 import Navbar from '@/widgets/navbar/ui/Navbar'
@@ -42,10 +43,12 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col">
-        <Providers>
-          <Navbar />
-          <Container className="py-20">{children}</Container>
-        </Providers>
+        <ClerkProvider>
+          <Providers>
+            <Navbar />
+            <Container className="py-20">{children}</Container>
+          </Providers>
+        </ClerkProvider>
       </body>
     </html>
   )
