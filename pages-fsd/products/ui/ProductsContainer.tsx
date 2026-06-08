@@ -1,4 +1,4 @@
-import { fetchAllProducts } from '@/pages-fsd/products/model/actions'
+import { fetchProductsBySearch } from '@/pages-fsd/products/model/actions'
 import { Button } from '@/shared/ui/shadcn/button'
 import { Separator } from '@/shared/ui/shadcn/separator'
 import ProductsGrid from '@/widgets/products-grid/ui/ProductsGrid'
@@ -13,7 +13,7 @@ async function ProductsContainer({
   layout: string
   search: string
 }) {
-  const products = await fetchAllProducts()
+  const products = await fetchProductsBySearch({ search })
   const totalProducts = products.length
   const searchTerm = search ? `&search=${search}` : ''
   return (
@@ -50,7 +50,7 @@ async function ProductsContainer({
         <Separator className="mt-4" />
       </section>
       {/* PRODUCTS */}
-      <div>
+      <div className="lg:w-192">
         {totalProducts === 0 ? (
           <h5 className="text-2xl mt-16">
             Sorry, no products matched your search...
