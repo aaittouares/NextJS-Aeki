@@ -16,8 +16,9 @@ function Sidebar() {
         return (
           <Button
             className="w-full mb-2 capitalize font-normal justify-start"
+            key={link.href}
             variant={variant}
-            render={<Link key={link.href} href={link.href} />}
+            render={<Link href={link.href} />}
             nativeButton={false}
           >
             {link.label}
