@@ -1,4 +1,5 @@
 import { Show, SignInButton, SignUpButton } from '@clerk/nextjs'
+import { auth } from '@clerk/nextjs/server'
 import Link from 'next/link'
 import { LuAlignLeft } from 'react-icons/lu'
 import {
@@ -13,7 +14,10 @@ import { links } from '@/shared/config/links'
 import UserIcon from './UserIcon'
 import SignOutLink from './SignOutLink'
 
-function LinksDropdown() {
+async function LinksDropdown() {
+  const { userId } = await auth()
+  const isAdmin = userId === process.env.ADMIN_USER_ID
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger
@@ -40,6 +44,7 @@ function LinksDropdown() {
         </Show>
         <Show when={'signed-in'}>
           {links.map((link) => {
+            if (link.label === 'dashboard' && !isAdmin) return null
             return (
               <DropdownMenuItem key={link.href}>
                 <Link href={link.href} className="capitalize w-full">
