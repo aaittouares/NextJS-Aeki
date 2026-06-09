@@ -1,3 +1,5 @@
+'use server'
+
 import prisma from '@/shared/lib/prisma/prisma.provider'
 
 export const fetchFeaturedProducts = async () => {
