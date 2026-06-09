@@ -13,11 +13,16 @@ export const createProductAction = async (
 
   try {
     const rawData = Object.fromEntries(formData)
-    const validatedFields = productSchema.parse(rawData)
+    const validatedFields = productSchema.safeParse(rawData)
+
+    if (!validatedFields.success) {
+      const errors = validatedFields.error.issues.map((issue) => issue.message)
+      throw new Error(errors.join(' '))
+    }
 
     await prisma.product.create({
       data: {
-        ...validatedFields,
+        ...validatedFields.data,
         image: '/images/hero2.jpg',
         clerkId: user.id,
       },
