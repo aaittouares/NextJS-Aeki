@@ -1,10 +1,12 @@
 'use server'
 
-import { FormResponse } from '@/shared/types/action-function'
-import { getAuthUser, renderError } from './helpers'
 import prisma from '@/shared/lib/prisma/prisma.provider'
-import { productSchema } from '@/entities/product/model/product.schema'
+import { FormResponse } from '@/shared/api/action-function.type'
 import { validateWithZodSchema } from '@/shared/lib/validate-with-zod-schema'
+import { imageSchema } from '@/shared/model/image.schema'
+import { productSchema } from '@/entities/product/model/product.schema'
+import { getAuthUser, renderError } from './helpers'
+import { uploadImage } from '@/shared/lib/supabase-bucket/bucket-client'
 
 export const createProductAction = async (
   prevState: FormResponse,
@@ -14,12 +16,17 @@ export const createProductAction = async (
 
   try {
     const rawData = Object.fromEntries(formData)
+    const file = formData.get('image') as File
     const validatedFields = validateWithZodSchema(productSchema, rawData)
+
+    const validatedFile = validateWithZodSchema(imageSchema, { image: file })
+
+    const fullPath = await uploadImage(validatedFile.image)
 
     await prisma.product.create({
       data: {
         ...validatedFields,
-        image: '/images/hero2.jpg',
+        image: fullPath!,
         clerkId: user.id,
       },
     })

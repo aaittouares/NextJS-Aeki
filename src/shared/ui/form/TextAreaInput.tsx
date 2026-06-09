@@ -16,7 +16,7 @@ function TextAreaInput({ name, labelText, defaultValue }: TextAreaInputProps) {
       <Textarea
         id={name}
         name={name}
-        defaultValue={defaultValue}
+        defaultValue={defaultValue || ''}
         rows={5}
         required
         className="leading-loose"

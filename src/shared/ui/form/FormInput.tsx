@@ -25,7 +25,7 @@ function FormInput({
         id={name}
         name={name}
         type={type}
-        defaultValue={defaultValue}
+        defaultValue={defaultValue || ''}
         placeholder={placeholder}
         required
       />

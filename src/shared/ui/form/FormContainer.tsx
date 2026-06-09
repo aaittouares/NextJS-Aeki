@@ -2,7 +2,7 @@
 
 import { useActionState, useEffect } from 'react'
 import { toast } from 'sonner'
-import { ActionFunction } from '@/shared/types/action-function'
+import { ActionFunction } from '@/shared/api/action-function.type'
 
 const initialState = {
   message: '',
