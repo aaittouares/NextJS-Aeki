@@ -4,6 +4,7 @@ import { FormResponse } from '@/shared/types/action-function'
 import { getAuthUser, renderError } from './helpers'
 import prisma from '@/shared/lib/prisma/prisma.provider'
 import { productSchema } from '@/entities/product/model/product.schema'
+import { validateWithZodSchema } from '@/shared/lib/validate-with-zod-schema'
 
 export const createProductAction = async (
   prevState: FormResponse,
@@ -13,16 +14,11 @@ export const createProductAction = async (
 
   try {
     const rawData = Object.fromEntries(formData)
-    const validatedFields = productSchema.safeParse(rawData)
-
-    if (!validatedFields.success) {
-      const errors = validatedFields.error.issues.map((issue) => issue.message)
-      throw new Error(errors.join(' '))
-    }
+    const validatedFields = validateWithZodSchema(productSchema, rawData)
 
     await prisma.product.create({
       data: {
-        ...validatedFields.data,
+        ...validatedFields,
         image: '/images/hero2.jpg',
         clerkId: user.id,
       },
