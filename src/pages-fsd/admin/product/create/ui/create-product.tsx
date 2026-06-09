@@ -21,7 +21,7 @@ export function CreateProductPage() {
           <div className="grid gap-4 md:grid-cols-2 my-4">
             <FormInput
               type="text"
-              name="productName"
+              name="name"
               label="Product name"
               defaultValue={fakeName}
             />
