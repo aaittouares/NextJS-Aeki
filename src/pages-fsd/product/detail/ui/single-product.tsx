@@ -1,10 +1,10 @@
 import { formatCurrency } from '@/shared/lib/format-currency'
 import FavoriteToggleButton from '@/features/add-favorite/ui/FavoriteToggleButton'
 import Image from 'next/image'
-import { fetchSingleProduct } from '../model/actions'
 import BreadCrumbs from './BreadCrumbs'
 import AddToCart from './AddToCart'
 import ProductRating from './ProductRatings'
+import { getSingleProductAction } from '../model/actions'
 
 export async function SingleProductPage({
   params,
@@ -12,7 +12,7 @@ export async function SingleProductPage({
   params: Promise<{ productId: string }>
 }) {
   const { productId } = await params
-  const product = await fetchSingleProduct(productId)
+  const product = await getSingleProductAction(productId)
   const { name, image, company, description, price } = product
   const dollarsAmount = formatCurrency(price)
   return (

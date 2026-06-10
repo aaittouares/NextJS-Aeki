@@ -6,7 +6,7 @@ import TextAreaInput from '@/shared/ui/form/TextAreaInput'
 import CheckboxInput from '@/shared/ui/form/CheckBoxInput'
 import FormContainer from '@/shared/ui/form/FormContainer'
 import { SubmitButton } from '@/shared/ui/form/SubmitButton'
-import { createProductAction } from '../model/actions'
+import { createProductAction } from '../model/create.product.usecase'
 
 export function CreateProductPage() {
   const fakeName = faker.commerce.productName()

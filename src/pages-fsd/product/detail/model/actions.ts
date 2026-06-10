@@ -1,14 +1,8 @@
-'use server'
-
-import prisma from '@/shared/api/prisma/prisma.provider'
+import { fetchSingleProduct } from '@/entities/product/api/product.prisma.repository'
 import { redirect } from 'next/navigation'
 
-export const fetchSingleProduct = async (productId: string) => {
-  const product = await prisma.product.findUnique({
-    where: {
-      id: productId,
-    },
-  })
+export const getSingleProductAction = async (productId: string) => {
+  const product = await fetchSingleProduct(productId)
   if (!product) {
     redirect('/products')
   }

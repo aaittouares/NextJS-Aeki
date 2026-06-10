@@ -1,18 +1,17 @@
 'use server'
 
-import prisma from '@/shared/api/prisma/prisma.provider'
-import { deleteImage } from '@/shared/api/supabase-bucket/bucket-client'
-import { getAdminUser, renderError } from '@/shared/model/helpers'
 import { revalidatePath } from 'next/cache'
+import { deleteImage } from '@/shared/api/supabase-bucket/bucket-client'
+import { getAdminUser, renderError } from '@/shared/lib/helpers'
+import {
+  deleteProduct,
+  fetchAllProducts,
+} from '@/entities/product/api/product.prisma.repository'
 
-export const fetchAdminProducts = async () => {
+export const getAdminProductsAction = async () => {
   await getAdminUser()
-  const products = await prisma.product.findMany({
-    orderBy: {
-      createdAt: 'desc',
-    },
-  })
-  return products
+
+  return await fetchAllProducts()
 }
 
 export const deleteProductAction = async (prevState: {
@@ -23,11 +22,7 @@ export const deleteProductAction = async (prevState: {
   getAdminUser()
 
   try {
-    const product = await prisma.product.delete({
-      where: {
-        id: productId,
-      },
-    })
+    const product = await deleteProduct(productId)
 
     await deleteImage(product.image)
 

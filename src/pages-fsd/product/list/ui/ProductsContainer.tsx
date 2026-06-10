@@ -1,6 +1,6 @@
-import { fetchProductsBySearch } from '@/pages-fsd/product/list/model/actions'
 import { Button } from '@/shared/ui/shadcn/button'
 import { Separator } from '@/shared/ui/shadcn/separator'
+import { fetchProductsBySearch } from '@/entities/product/api/product.prisma.repository'
 import ProductsGrid from '@/widgets/products-grid/ui/ProductsGrid'
 import Link from 'next/link'
 import { LuLayoutGrid, LuList } from 'react-icons/lu'
