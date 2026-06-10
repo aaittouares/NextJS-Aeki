@@ -1,4 +1,4 @@
-import { S3Client } from '@aws-sdk/client-s3'
+import { DeleteObjectCommand, S3Client } from '@aws-sdk/client-s3'
 import { Upload } from '@aws-sdk/lib-storage'
 
 const bucketName = process.env.BUCKET_NAME
@@ -37,9 +37,24 @@ export const uploadImage = async (image: File) => {
     console.log('✅ Upload successful:', publicFileUrl)
 
     return publicFileUrl
-
-    return
   } catch (err) {
     console.error('❌ Upload failed:', err)
+  }
+}
+
+export const deleteImage = async (url: string) => {
+  const imageName = url.split('/').pop()
+  if (!imageName) throw new Error('Invalid URL')
+
+  try {
+    const command = new DeleteObjectCommand({
+      Bucket: bucketName,
+      Key: imageName,
+    })
+
+    const response = await s3.send(command)
+    console.log(`✅ Deleted: ${imageName}`, response)
+  } catch (err) {
+    console.error('❌ Error deleting object:', err)
   }
 }

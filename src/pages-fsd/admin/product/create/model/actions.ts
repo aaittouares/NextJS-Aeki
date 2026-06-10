@@ -6,7 +6,7 @@ import { validateWithZodSchema } from '@/shared/lib/validate-with-zod-schema'
 import { imageSchema } from '@/shared/model/image.schema'
 import { productSchema } from '@/entities/product/model/product.schema'
 import { getAuthUser, renderError } from '@/shared/model/helpers'
-import { uploadImage } from '@/shared/lib/supabase-bucket/bucket-client'
+import { uploadImage } from '@/shared/api/supabase-bucket/bucket-client'
 import { redirect } from 'next/navigation'
 
 export const createProductAction = async (
