@@ -10,14 +10,14 @@ import {
   Table,
 } from '@/shared/ui/shadcn/table'
 import Link from 'next/link'
-import { fetchAdminProducts } from '../model/actions'
+import { getAdminProductsAction } from '../model/actions'
 import DeleteProduct from './DeleteProduct'
 
 import { LuPen } from 'react-icons/lu'
 import { Button } from '@/shared/ui/shadcn/button'
 
 export async function AdminProductsPage() {
-  const items = await fetchAdminProducts()
+  const items = await getAdminProductsAction()
   if (items.length === 0) return <EmptyList />
   return (
     <section>
