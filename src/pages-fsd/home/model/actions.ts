@@ -1,6 +1,6 @@
 'use server'
 
-import prisma from '@/shared/lib/prisma/prisma.provider'
+import prisma from '@/shared/api/prisma/prisma.provider'
 
 export const fetchFeaturedProducts = async () => {
   const products = await prisma.product.findMany({

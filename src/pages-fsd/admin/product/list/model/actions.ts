@@ -1,6 +1,6 @@
 'use server'
 
-import prisma from '@/shared/lib/prisma/prisma.provider'
+import prisma from '@/shared/api/prisma/prisma.provider'
 import { deleteImage } from '@/shared/api/supabase-bucket/bucket-client'
 import { getAdminUser, renderError } from '@/shared/model/helpers'
 import { revalidatePath } from 'next/cache'

@@ -1,6 +1,6 @@
 'use server'
 
-import prisma from '@/shared/lib/prisma/prisma.provider'
+import prisma from '@/shared/api/prisma/prisma.provider'
 import { FormResponse } from '@/shared/api/action-function.type'
 import { validateWithZodSchema } from '@/shared/lib/validate-with-zod-schema'
 import { imageSchema } from '@/shared/model/image.schema'
