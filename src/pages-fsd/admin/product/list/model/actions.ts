@@ -1,7 +1,8 @@
 'use server'
 
 import prisma from '@/shared/lib/prisma/prisma.provider'
-import { getAdminUser } from '@/shared/model/helpers'
+import { getAdminUser, renderError } from '@/shared/model/helpers'
+import { revalidatePath } from 'next/cache'
 
 export const fetchAdminProducts = async () => {
   await getAdminUser()
@@ -11,4 +12,27 @@ export const fetchAdminProducts = async () => {
     },
   })
   return products
+}
+
+export const deleteProductAction = async (prevState: {
+  productId: string
+  message: string
+}) => {
+  const { productId } = prevState
+  getAdminUser()
+
+  try {
+    await prisma.product.delete({
+      where: {
+        id: productId,
+      },
+    })
+
+    revalidatePath('/admin/products')
+    return { productId: '', message: 'product deleted' }
+  } catch (err) {
+    const error = await renderError(err)
+
+    return { productId: '', message: error.message }
+  }
 }

@@ -2,9 +2,6 @@
 
 import { ReloadIcon } from '@radix-ui/react-icons'
 import { useFormStatus } from 'react-dom'
-import { SignInButton } from '@clerk/nextjs'
-import { FaRegHeart, FaHeart } from 'react-icons/fa'
-import { LuTrash2, LuPen } from 'react-icons/lu'
 import { Button } from '@/shared/ui/shadcn/button'
 import { cn } from '@/shared/lib/shadcn/utils'
 

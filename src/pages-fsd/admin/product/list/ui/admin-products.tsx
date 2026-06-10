@@ -11,6 +11,10 @@ import {
 } from '@/shared/ui/shadcn/table'
 import Link from 'next/link'
 import { fetchAdminProducts } from '../model/actions'
+import DeleteProduct from './DeleteProduct'
+
+import { LuPen } from 'react-icons/lu'
+import { Button } from '@/shared/ui/shadcn/button'
 
 export async function AdminProductsPage() {
   const items = await fetchAdminProducts()
@@ -45,7 +49,18 @@ export async function AdminProductsPage() {
                 <TableCell>{company}</TableCell>
                 <TableCell>{formatCurrency(price)}</TableCell>
 
-                <TableCell className="flex items-center gap-x-2"></TableCell>
+                <TableCell className="flex items-center gap-x-2">
+                  <Link href={`/admin/products/${productId}/edit`}>
+                    <Button
+                      size="icon"
+                      variant="link"
+                      className="p-2 cursor-pointer"
+                    >
+                      <LuPen />
+                    </Button>
+                  </Link>
+                  <DeleteProduct productId={productId} />
+                </TableCell>
               </TableRow>
             )
           })}
