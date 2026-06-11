@@ -1,11 +1,14 @@
 'use server'
 
+import { uploadImage, deleteImage } from '@/entities/image/api/image.repository'
+import { imageSchema } from '@/entities/image/model/image.schema'
 import {
   fetchSingleProduct,
   updateProduct,
+  updateProductImageUrl,
 } from '@/entities/product/api/product.prisma.repository'
 import { productSchema } from '@/entities/product/model/product.schema'
-import { getAdminUser, renderError } from '@/shared/lib/helpers'
+import { getAdminUser, getAuthUser, renderError } from '@/shared/lib/helpers'
 import { validateWithZodSchema } from '@/shared/lib/validate-with-zod-schema'
 import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
@@ -38,9 +41,26 @@ export const updateProductAction = async (
     return renderError(error)
   }
 }
+
 export const updateProductImageAction = async (
   prevState: any,
   formData: FormData,
 ) => {
-  return { message: 'Product Image updated successfully' }
+  await getAuthUser()
+  try {
+    const image = formData.get('image') as File
+    const productId = formData.get('id') as string
+    const oldImageUrl = formData.get('url') as string
+
+    const validatedFile = validateWithZodSchema(imageSchema, { image })
+    const fullPath = await uploadImage(validatedFile.image)
+    await deleteImage(oldImageUrl)
+
+    await updateProductImageUrl(productId, fullPath!)
+
+    revalidatePath(`/admin/products/${productId}/edit`)
+    return { message: 'Product Image updated successfully' }
+  } catch (error) {
+    return renderError(error)
+  }
 }

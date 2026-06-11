@@ -1,22 +1,32 @@
+'use client'
+
 import { Checkbox } from '@/shared/ui/shadcn/checkbox'
+import { useState } from 'react'
 
 type CheckboxInputProps = {
   name: string
   label: string
-  defaultChecked?: boolean
+  checked?: boolean
 }
 
 export default function CheckboxInput({
   name,
   label,
-  defaultChecked = false,
+  checked = false,
 }: CheckboxInputProps) {
+  const [checkedValue, setCheckedValue] = useState(checked)
+
+  const handleClick = () => {
+    setCheckedValue((prev) => !prev)
+  }
+
   return (
     <div className="flex items-center space-x-2">
       <Checkbox
         id={name}
         name={name}
-        defaultChecked={defaultChecked || undefined}
+        onClick={handleClick}
+        checked={checkedValue}
       />
       <label
         htmlFor={name}

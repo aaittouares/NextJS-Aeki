@@ -4,10 +4,10 @@ import { redirect } from 'next/navigation'
 import { FormResponse } from '@/shared/api/action-function.type'
 import { validateWithZodSchema } from '@/shared/lib/validate-with-zod-schema'
 import { getAuthUser, renderError } from '@/shared/lib/helpers'
-import { uploadImage } from '@/shared/api/supabase-bucket/bucket-client'
+import { uploadImage } from '@/entities/image/api/image.repository'
 import { productSchema } from '@/entities/product/model/product.schema'
 import { createProduct } from '@/entities/product/api/product.prisma.repository'
-import { imageSchema } from './image.schema'
+import { imageSchema } from '@/entities/image/model/image.schema'
 
 export const createProductAction = async (
   prevState: FormResponse,

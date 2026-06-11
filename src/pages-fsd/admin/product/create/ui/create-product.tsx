@@ -1,11 +1,11 @@
 import { faker } from '@faker-js/faker'
 import FormInput from '@/shared/ui/form/FormInput'
 import PriceInput from '@/shared/ui/form/PriceInput'
-import ImageInput from '@/shared/ui/form/ImageInput'
 import TextAreaInput from '@/shared/ui/form/TextAreaInput'
 import CheckboxInput from '@/shared/ui/form/CheckBoxInput'
 import FormContainer from '@/shared/ui/form/FormContainer'
-import { SubmitButton } from '@/shared/ui/form/SubmitButton'
+import SubmitButton from '@/shared/ui/form/SubmitButton'
+import ImageInput from '@/entities/image/ui/ImageInput'
 import { createProductAction } from '../model/create.product.usecase'
 
 export function CreateProductPage() {

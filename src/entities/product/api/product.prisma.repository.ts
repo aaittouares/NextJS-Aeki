@@ -85,3 +85,17 @@ export const updateProduct = async (
     data,
   })
 }
+
+export const updateProductImageUrl = async (
+  productId: string,
+  imagePath: string,
+) => {
+  await prisma.product.update({
+    where: {
+      id: productId,
+    },
+    data: {
+      image: imagePath,
+    },
+  })
+}

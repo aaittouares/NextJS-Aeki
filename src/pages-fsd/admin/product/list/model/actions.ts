@@ -1,7 +1,7 @@
 'use server'
 
 import { revalidatePath } from 'next/cache'
-import { deleteImage } from '@/shared/api/supabase-bucket/bucket-client'
+import { deleteImage } from '@/entities/image/api/image.repository'
 import { getAdminUser, renderError } from '@/shared/lib/helpers'
 import {
   deleteProduct,
