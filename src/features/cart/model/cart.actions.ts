@@ -5,6 +5,7 @@ import { Cart } from '@/shared/api/prisma/generated/client'
 import prisma from '@/shared/api/prisma/prisma.provider'
 import { getAuthUser, renderError } from '@/shared/lib/helpers'
 import { auth } from '@clerk/nextjs/server'
+import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
 
 export const getNumberOfCartItems = async () => {
@@ -97,6 +98,37 @@ const updateOrCreateCartItem = async ({
   }
 }
 
+export const updateCartItemAction = async ({
+  amount,
+  cartItemId,
+}: {
+  amount: number
+  cartItemId: string
+}) => {
+  const user = await getAuthUser()
+
+  try {
+    const cart = await fetchOrCreateCart({
+      userId: user.id,
+      errorOnFailure: true,
+    })
+    await prisma.cartItem.update({
+      where: {
+        id: cartItemId,
+        cartId: cart.id,
+      },
+      data: {
+        amount,
+      },
+    })
+    await updateCart(cart)
+    revalidatePath('/cart')
+    return { message: 'cart updated' }
+  } catch (error) {
+    return renderError(error)
+  }
+}
+
 export const updateCart = async (cart: Cart) => {
   const cartItems = await prisma.cartItem.findMany({
     where: {
@@ -104,6 +136,9 @@ export const updateCart = async (cart: Cart) => {
     },
     include: {
       product: true, // Include the related product
+    },
+    orderBy: {
+      createdAt: 'asc',
     },
   })
 
@@ -118,19 +153,21 @@ export const updateCart = async (cart: Cart) => {
   const shipping = cartTotal ? cart.shipping : 0
   const orderTotal = cartTotal + tax + shipping
 
-  await prisma.cart.update({
+  const currentCart = await prisma.cart.update({
     where: {
       id: cart.id,
     },
+
     data: {
       numItemsInCart,
       cartTotal,
       tax,
       orderTotal,
     },
+    include: includeProductClause,
   })
+  return { currentCart, cartItems }
 }
-
 export const addToCartAction = async (prevState: any, formData: FormData) => {
   const user = await getAuthUser()
   try {
@@ -143,5 +180,32 @@ export const addToCartAction = async (prevState: any, formData: FormData) => {
   } catch (error) {
     return renderError(error)
   }
+  revalidatePath('/cart')
   redirect('/cart')
+}
+
+export const removeCartItemAction = async (
+  prevState: any,
+  formData: FormData,
+) => {
+  const user = await getAuthUser()
+  try {
+    const cartItemId = formData.get('id') as string
+    const cart = await fetchOrCreateCart({
+      userId: user.id,
+      errorOnFailure: true,
+    })
+    await prisma.cartItem.delete({
+      where: {
+        id: cartItemId,
+        cartId: cart.id,
+      },
+    })
+
+    await updateCart(cart)
+    revalidatePath('/cart')
+    return { message: 'Item removed from cart' }
+  } catch (error) {
+    return renderError(error)
+  }
 }

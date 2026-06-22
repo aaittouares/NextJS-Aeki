@@ -1,3 +1,5 @@
+import { Prisma } from '@/shared/api/prisma/generated/client'
+
 export type CartItem = {
   productId: string
   image: string
@@ -15,3 +17,7 @@ export type CartState = {
   tax: number
   orderTotal: number
 }
+
+export type CartItemWithProduct = Prisma.CartItemGetPayload<{
+  include: { product: true }
+}>

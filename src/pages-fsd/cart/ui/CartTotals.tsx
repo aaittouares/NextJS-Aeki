@@ -1,0 +1,57 @@
+import { FormResponse } from '@/shared/api/action-function.type'
+import { Cart } from '@/shared/api/prisma/generated/client'
+import { formatCurrency } from '@/shared/lib/format-currency'
+import FormContainer from '@/shared/ui/form/FormContainer'
+import SubmitButton from '@/shared/ui/form/SubmitButton'
+import { Card, CardTitle } from '@/shared/ui/shadcn/card'
+import { Separator } from '@base-ui/react'
+
+function CartTotals({ cart }: { cart: Cart }) {
+  const { cartTotal, shipping, tax, orderTotal } = cart
+
+  async function createOrderAction(
+    prevState: FormResponse,
+    formData: FormData,
+  ): Promise<{ message: string }> {
+    'use server'
+    throw new Error('Function not implemented.')
+  }
+
+  return (
+    <div>
+      <Card className="p-8 ">
+        <CartTotalRow label="Subtotal" amount={cartTotal} />
+        <CartTotalRow label="Shipping" amount={shipping} />
+        <CartTotalRow label="Tax" amount={tax} />
+        <CardTitle className="mt-8">
+          <CartTotalRow label="Order Total" amount={orderTotal} lastRow />
+        </CardTitle>
+      </Card>
+      <FormContainer action={createOrderAction}>
+        <SubmitButton text="Place Order" className="w-full mt-8" />
+      </FormContainer>
+    </div>
+  )
+}
+
+function CartTotalRow({
+  label,
+  amount,
+  lastRow,
+}: {
+  label: string
+  amount: number
+  lastRow?: boolean
+}) {
+  return (
+    <>
+      <p className="flex justify-between text-sm">
+        <span>{label}</span>
+        <span>{formatCurrency(amount)}</span>
+      </p>
+      {lastRow ? null : <Separator className="my-2" />}
+    </>
+  )
+}
+
+export default CartTotals
