@@ -2,7 +2,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { Card, CardContent } from '@/shared/ui/shadcn/card'
 import { formatCurrency } from '@/shared/lib/format-currency'
-import FavoriteToggleButton from '@/features/add-favorite/ui/FavoriteToggleButton'
+import FavoriteToggleContainer from '@/features/add-favorite/ui/FavoriteToggleContainer'
 
 import { Product } from '@/shared/api/prisma/generated/client'
 
@@ -38,7 +38,7 @@ function ProductsGrid({ products }: { products: Product[] }) {
               </Card>
             </Link>
             <div className="absolute top-7 right-7 z-5">
-              <FavoriteToggleButton productId={productId} />
+              <FavoriteToggleContainer productId={productId} />
             </div>
           </article>
         )

@@ -1,5 +1,5 @@
 import { formatCurrency } from '@/shared/lib/format-currency'
-import FavoriteToggleButton from '@/features/add-favorite/ui/FavoriteToggleButton'
+import FavoriteToggleContainer from '@/features/add-favorite/ui/FavoriteToggleContainer'
 import Image from 'next/image'
 import BreadCrumbs from './BreadCrumbs'
 import AddToCart from './AddToCart'
@@ -34,7 +34,7 @@ export async function SingleProductPage({
         <div>
           <div className="flex gap-x-8 items-center">
             <h1 className="capitalize text-3xl font-bold">{name}</h1>
-            <FavoriteToggleButton productId={productId} />
+            <FavoriteToggleContainer productId={productId} />
           </div>
           <ProductRating productId={productId} />
           <h4 className="text-xl mt-2">{company}</h4>

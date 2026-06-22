@@ -1,3 +1,15 @@
-export function FavoritesPage() {
-  return <div>FavoritesPage</div>
+import SectionTitle from '@/shared/ui/SectionTitle'
+import ProductsGrid from '@/widgets/products-grid/ui/ProductsGrid'
+import { fetchUserFavorites } from '../model/actions'
+
+export async function FavoritesPage() {
+  const favorites = await fetchUserFavorites()
+  if (favorites.length === 0)
+    return <SectionTitle text="You have no favorites yet." />
+  return (
+    <div>
+      <SectionTitle text="Favorites" />
+      <ProductsGrid products={favorites.map((favorite) => favorite.product)} />
+    </div>
+  )
 }
