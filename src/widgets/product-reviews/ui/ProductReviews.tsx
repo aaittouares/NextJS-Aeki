@@ -1,9 +1,9 @@
 import ReviewCard from '@/entities/review/ui/ReviewCard'
 import SectionTitle from '@/shared/ui/SectionTitle'
-import { fetchProductReviews } from '../model/actions'
+import { getProductReviews } from '../model/product-reviews.actions'
 
 async function ProductReviews({ productId }: { productId: string }) {
-  const reviews = await fetchProductReviews(productId)
+  const reviews = await getProductReviews(productId)
 
   return (
     <div className="mt-16">

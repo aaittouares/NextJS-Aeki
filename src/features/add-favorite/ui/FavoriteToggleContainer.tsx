@@ -1,10 +1,9 @@
 import { auth } from '@clerk/nextjs/server'
-import { fetchFavoriteId } from '../model/action'
+import { findFavoriteId } from '../model/add-favorite.actions'
 import { SignInButton } from '@clerk/nextjs'
 import { FaRegHeart } from 'react-icons/fa'
 import { Button } from '@/shared/ui/shadcn/button'
 import FavoriteToggleButton from '@/features/add-favorite/ui/FavoriteToggleButton'
-import { fa } from '@faker-js/faker'
 
 async function FavoriteToggleContainer({ productId }: { productId: string }) {
   const { userId } = await auth()
@@ -21,7 +20,7 @@ async function FavoriteToggleContainer({ productId }: { productId: string }) {
         ></Button>
       </SignInButton>
     )
-  const favoriteId = await fetchFavoriteId({ productId })
+  const favoriteId = await findFavoriteId({ productId })
 
   return <FavoriteToggleButton favoriteId={favoriteId} productId={productId} />
 }

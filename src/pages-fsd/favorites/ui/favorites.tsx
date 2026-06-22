@@ -1,6 +1,6 @@
 import SectionTitle from '@/shared/ui/SectionTitle'
 import ProductsGrid from '@/widgets/products-grid/ui/ProductsGrid'
-import { fetchUserFavorites } from '../model/actions'
+import { fetchUserFavorites } from '../model/favorites.actions'
 
 export async function FavoritesPage() {
   const favorites = await fetchUserFavorites()

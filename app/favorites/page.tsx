@@ -1,1 +1,1 @@
-export { FavoritesPage as default } from '@/pages-fsd/favourites'
+export { FavoritesPage as default } from '@/pages-fsd/favorites'

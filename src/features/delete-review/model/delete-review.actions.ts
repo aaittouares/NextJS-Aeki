@@ -1,6 +1,7 @@
 'use server'
 
-import prisma from '@/shared/api/prisma/prisma.provider'
+import { deleteReviewByIdAndUser } from '@/entities/review/api/review.prisma.repository'
+
 import { getAuthUser, renderError } from '@/shared/lib/helpers'
 import { revalidatePath } from 'next/cache'
 
@@ -12,12 +13,7 @@ export const deleteReviewAction = async (prevState: {
   const user = await getAuthUser()
 
   try {
-    await prisma.review.delete({
-      where: {
-        id: itemId,
-        clerkId: user.id,
-      },
-    })
+    await deleteReviewByIdAndUser(itemId, user.id)
 
     revalidatePath('/reviews')
     return { itemId: '', message: 'Review deleted successfully' }

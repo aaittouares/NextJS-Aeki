@@ -4,7 +4,10 @@ import Image from 'next/image'
 import BreadCrumbs from './BreadCrumbs'
 import AddToCart from './AddToCart'
 import ProductRating from './ProductRatings'
-import { getSingleProductAction, findExistingReview } from '../model/actions'
+import {
+  getSingleProductAction,
+  findExistingReview,
+} from '../model/product-detail.actions'
 import SubmitReview from '@/features/create-review/ui/SubmitReview'
 import ProductReviews from '@/widgets/product-reviews/ui/ProductReviews'
 

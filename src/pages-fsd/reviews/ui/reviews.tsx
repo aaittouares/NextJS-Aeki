@@ -1,10 +1,10 @@
 import ReviewCard from '@/entities/review/ui/ReviewCard'
 import DeleteReview from '@/features/delete-review/ui/DeleteReviewButton'
 import SectionTitle from '@/shared/ui/SectionTitle'
-import { fetchProductReviewsByUser } from '../model/actions'
+import { getUserReviews } from '../model/reviews.actions'
 
 export async function ReviewsPage() {
-  const reviews = await fetchProductReviewsByUser()
+  const reviews = await getUserReviews()
   if (reviews.length === 0)
     return <SectionTitle text="you have no reviews yet" />
 

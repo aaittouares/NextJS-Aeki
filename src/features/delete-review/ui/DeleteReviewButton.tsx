@@ -1,4 +1,4 @@
-import { deleteReviewAction } from '../model/actions'
+import { deleteReviewAction } from '../model/delete-review.actions'
 import DeleteActionButton from '@/shared/ui/DeleteActionButton'
 
 const DeleteReview = ({ reviewId }: { reviewId: string }) => {

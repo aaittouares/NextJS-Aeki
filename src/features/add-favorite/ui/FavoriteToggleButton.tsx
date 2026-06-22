@@ -1,7 +1,7 @@
 'use client'
 
 import { usePathname } from 'next/navigation'
-import { toggleFavoriteAction } from '../model/action'
+import { toggleFavoriteAction } from '../model/add-favorite.actions'
 import { startTransition, useActionState, useEffect } from 'react'
 import { FaHeart, FaRegHeart } from 'react-icons/fa'
 import { Button } from '@/shared/ui/shadcn/button'

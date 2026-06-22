@@ -8,7 +8,7 @@ import TextAreaInput from '@/shared/ui/form/TextAreaInput'
 import SubmitButton from '@/shared/ui/form/SubmitButton'
 import { useState } from 'react'
 import { useUser } from '@clerk/nextjs'
-import { createReviewAction } from '../model/actions'
+import { createReviewAction } from '../model/create-review.actions'
 
 function SubmitReview({ productId }: { productId: string }) {
   const [isReviewFormVisible, setIsReviewFormVisible] = useState(false)

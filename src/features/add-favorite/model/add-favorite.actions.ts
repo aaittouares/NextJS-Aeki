@@ -1,19 +1,18 @@
 'use server'
 
-import prisma from '@/shared/api/prisma/prisma.provider'
+import {
+  createFavorite,
+  deleteFavoriteById,
+  fetchFirstFavoriteByProductIdAndUserId,
+} from '@/entities/favorite/api/favorite.prisma.repository'
 import { getAuthUser, renderError } from '@/shared/lib/helpers'
 import { revalidatePath } from 'next/cache'
 
-export const fetchFavoriteId = async ({ productId }: { productId: string }) => {
+export const findFavoriteId = async ({ productId }: { productId: string }) => {
   const user = await getAuthUser()
-  const favorite = await prisma.favorite.findFirst({
-    where: {
-      productId,
-      clerkId: user.id,
-    },
-    select: {
-      id: true,
-    },
+  const favorite = await fetchFirstFavoriteByProductIdAndUserId({
+    productId,
+    userId: user.id,
   })
   return favorite?.id || null
 }
@@ -28,20 +27,11 @@ export const toggleFavoriteAction = async (prevState: {
   let { productId, favoriteId, pathname } = prevState
   try {
     if (favoriteId) {
-      await prisma.favorite.delete({
-        where: {
-          id: favoriteId,
-        },
-      })
+      await deleteFavoriteById(favoriteId)
 
       favoriteId = null
     } else {
-      const favorite = await prisma.favorite.create({
-        data: {
-          productId,
-          clerkId: user.id,
-        },
-      })
+      const favorite = await createFavorite(productId, user.id)
 
       favoriteId = favorite.id
     }
