@@ -15,22 +15,22 @@ export const getAdminProductsAction = async () => {
 }
 
 export const deleteProductAction = async (prevState: {
-  productId: string
+  itemId: string
   message: string
 }) => {
-  const { productId } = prevState
+  const { itemId } = prevState
   getAdminUser()
 
   try {
-    const product = await deleteProduct(productId)
+    const product = await deleteProduct(itemId)
 
     await deleteImage(product.image)
 
     revalidatePath('/admin/products')
-    return { productId: '', message: 'product deleted' }
+    return { itemId: '', message: 'product deleted' }
   } catch (err) {
     const error = await renderError(err)
 
-    return { productId: '', message: error.message }
+    return { itemId: '', message: error.message }
   }
 }

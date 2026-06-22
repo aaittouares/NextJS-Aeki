@@ -4,7 +4,11 @@ import Image from 'next/image'
 import BreadCrumbs from './BreadCrumbs'
 import AddToCart from './AddToCart'
 import ProductRating from './ProductRatings'
-import { getSingleProductAction } from '../model/actions'
+import { getSingleProductAction, findExistingReview } from '../model/actions'
+import SubmitReview from '@/features/create-review/ui/SubmitReview'
+import ProductReviews from '@/widgets/product-reviews/ui/ProductReviews'
+
+import { auth } from '@clerk/nextjs/server'
 
 export async function SingleProductPage({
   params,
@@ -15,6 +19,11 @@ export async function SingleProductPage({
   const product = await getSingleProductAction(productId)
   const { name, image, company, description, price } = product
   const dollarsAmount = formatCurrency(price)
+
+  const { userId } = await auth()
+  const reviewDoesNotExist =
+    userId && !(await findExistingReview(userId, product.id))
+
   return (
     <section>
       <BreadCrumbs name={product.name} />
@@ -45,6 +54,9 @@ export async function SingleProductPage({
           <AddToCart productId={productId} />
         </div>
       </div>
+
+      <ProductReviews productId={productId} />
+      {reviewDoesNotExist && <SubmitReview productId={productId} />}
     </section>
   )
 }
