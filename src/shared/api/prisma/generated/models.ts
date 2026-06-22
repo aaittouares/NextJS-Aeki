@@ -11,4 +11,6 @@
 export type * from './models/Product.ts'
 export type * from './models/Favorite.ts'
 export type * from './models/Review.ts'
+export type * from './models/Cart.ts'
+export type * from './models/CartItem.ts'
 export type * from './commonInputTypes.ts'

@@ -1,10 +1,10 @@
 import { Button } from '@/shared/ui/shadcn/button'
 import Link from 'next/link'
 import { LuShoppingCart } from 'react-icons/lu'
+import { getNumberOfCartItems } from '../model/cart.actions'
 
-function CartButton() {
-  // temp
-  const numItemsInCart = 9
+async function CartButton() {
+  const numItemsInCart = await getNumberOfCartItems()
   return (
     <Button
       nativeButton={false}

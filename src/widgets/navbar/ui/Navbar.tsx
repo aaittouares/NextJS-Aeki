@@ -1,7 +1,7 @@
 import Container from '@/shared/ui/Container'
 import Logo from './Logo'
 import NavSearch from './NavSearch'
-import CartButton from './CartButton'
+import CartButton from '@/features/cart/ui/CartButton'
 import ToggleTheme from './ToggleTheme'
 import LinksDropdown from './LinksDropdown'
 import { Suspense } from 'react'
