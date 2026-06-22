@@ -2,7 +2,7 @@ import { formatCurrency } from '@/shared/lib/format-currency'
 import FavoriteToggleContainer from '@/features/add-favorite/ui/FavoriteToggleContainer'
 import Image from 'next/image'
 import BreadCrumbs from './BreadCrumbs'
-import AddToCart from './AddToCart'
+import AddToCart from '@/features/cart/ui/AddToCart'
 import ProductRating from './ProductRatings'
 import {
   getSingleProductAction,
