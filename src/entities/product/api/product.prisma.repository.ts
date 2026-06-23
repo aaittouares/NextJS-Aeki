@@ -35,6 +35,10 @@ export const fetchSingleProduct = async (productId: string) => {
       id: productId,
     },
   })
+
+  if (!product) {
+    throw new Error('Product not found')
+  }
   return product
 }
 
