@@ -1,5 +1,3 @@
-'use client'
-
 import { CartItemWithProduct } from '@/entities/cart/api/types'
 
 import { FirstColumn, SecondColumn, FourthColumn } from './CartItemColums'

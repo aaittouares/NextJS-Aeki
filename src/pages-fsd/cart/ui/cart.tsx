@@ -1,4 +1,7 @@
-import { getOrCreateCart, updateCart } from '@/features/cart/model/cart.actions'
+import {
+  getCartItems,
+  getOrCreateCart,
+} from '@/features/cart/model/cart.actions'
 import SectionTitle from '@/shared/ui/SectionTitle'
 import { auth } from '@clerk/nextjs/server'
 import { redirect } from 'next/navigation'
@@ -8,8 +11,8 @@ import CartTotals from './CartTotals'
 export async function CartPage() {
   const { userId } = await auth()
   if (!userId) redirect('/')
-  const previousCart = await getOrCreateCart({ userId })
-  const { cartItems, currentCart } = await updateCart(previousCart)
+  const cart = await getOrCreateCart({ userId })
+  const cartItems = await getCartItems(cart.id)
 
   if (cartItems.length === 0) {
     return <SectionTitle text="Empty cart" />
@@ -22,7 +25,7 @@ export async function CartPage() {
           <CartItemsList cartItems={cartItems} />
         </div>
         <div className="lg:col-span-4 lg:pl-4">
-          <CartTotals cart={currentCart} />
+          <CartTotals cart={cart} />
         </div>
       </div>
     </>

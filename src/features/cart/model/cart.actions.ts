@@ -4,10 +4,10 @@ import {
   createCart,
   createCartItem,
   deleteCartItem,
+  fetchCartItems,
   findCartByUser,
   findCartItem,
-  getCartByUser,
-  getCartItems,
+  getCartWithNumItemsInCart,
   updateCartItemAmount,
   updateCartValue,
 } from '@/entities/cart/api/cart.prisma.repository'
@@ -21,21 +21,21 @@ import { redirect } from 'next/navigation'
 export const getNumberOfCartItems = async () => {
   const { userId } = await auth()
 
-  const cart = await getCartByUser(userId)
+  const cart = await getCartWithNumItemsInCart(userId)
 
   return cart?.numItemsInCart || 0
 }
 
 export const getOrCreateCart = async ({
   userId,
-  errorOnFailure = false,
+  errorOnGetFailure = false,
 }: {
   userId: string
-  errorOnFailure?: boolean
+  errorOnGetFailure?: boolean
 }) => {
   let cart = await findCartByUser(userId)
 
-  if (!cart && errorOnFailure) {
+  if (!cart && errorOnGetFailure) {
     throw new Error('Cart not found')
   }
 
@@ -78,7 +78,7 @@ export const updateCartItemAction = async ({
 
     const cart = await getOrCreateCart({
       userId: user.id,
-      errorOnFailure: true,
+      errorOnGetFailure: true,
     })
 
     await updateCart(cart)
@@ -89,8 +89,14 @@ export const updateCartItemAction = async ({
   }
 }
 
+export const getCartItems = async (cartId: string) => {
+  const cartItems = await fetchCartItems(cartId)
+
+  return cartItems
+}
+
 export const updateCart = async (cart: Cart) => {
-  const cartItems = await getCartItems(cart.id)
+  const cartItems = await fetchCartItems(cart.id)
 
   let numItemsInCart = 0
   let cartTotal = 0
@@ -104,14 +110,12 @@ export const updateCart = async (cart: Cart) => {
   const shipping = cartTotal ? cart.shipping : 0
   const orderTotal = cartTotal + tax + shipping
 
-  const currentCart = await updateCartValue(cart.id, {
+  await updateCartValue(cart.id, {
     numItemsInCart,
     cartTotal,
     tax,
     orderTotal,
   })
-
-  return { currentCart, cartItems }
 }
 
 export const addToCartAction = async (prevState: any, formData: FormData) => {
@@ -140,7 +144,7 @@ export const removeCartItemAction = async (
     const cartItemId = formData.get('id') as string
     const cart = await getOrCreateCart({
       userId: user.id,
-      errorOnFailure: true,
+      errorOnGetFailure: true,
     })
 
     await deleteCartItem(cartItemId, cart.id)

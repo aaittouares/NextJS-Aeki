@@ -2,7 +2,7 @@
 
 import prisma from '@/shared/api/prisma/prisma.provider'
 
-export const getCartByUser = async (userId: string | null) => {
+export const getCartWithNumItemsInCart = async (userId: string | null) => {
   const cart = await prisma.cart.findFirst({
     where: {
       clerkId: userId ?? '',
@@ -15,20 +15,11 @@ export const getCartByUser = async (userId: string | null) => {
   return cart
 }
 
-const includeProductClause = {
-  cartItems: {
-    include: {
-      product: true,
-    },
-  },
-}
-
 export const findCartByUser = async (userId: string) => {
   const cart = await prisma.cart.findFirst({
     where: {
       clerkId: userId,
     },
-    include: includeProductClause,
   })
 
   return cart
@@ -39,7 +30,6 @@ export const createCart = async (userId: string) => {
     data: {
       clerkId: userId,
     },
-    include: includeProductClause,
   })
 
   return cart
@@ -58,9 +48,7 @@ export const updateCartValue = async (
     where: {
       id: cartId,
     },
-
     data,
-    include: includeProductClause,
   })
 
   return updatedCart
@@ -110,7 +98,7 @@ export const updateCartItemAmount = async (
   })
 }
 
-export const getCartItems = async (cartId: string) => {
+export const fetchCartItems = async (cartId: string) => {
   const cartItems = await prisma.cartItem.findMany({
     where: {
       cartId,
