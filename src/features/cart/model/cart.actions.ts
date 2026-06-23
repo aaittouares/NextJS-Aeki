@@ -16,6 +16,7 @@ import { Cart } from '@/shared/api/prisma/generated/client'
 import { getAuthUser, renderError } from '@/shared/lib/helpers'
 import { auth } from '@clerk/nextjs/server'
 import { revalidatePath } from 'next/cache'
+import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
 
 export const getNumberOfCartItems = async () => {
@@ -150,8 +151,10 @@ export const removeCartItemAction = async (
     await deleteCartItem(cartItemId, cart.id)
 
     await updateCart(cart)
+    const cookieStore = await cookies()
+    cookieStore.set('toast', 'Item removed from cart')
     revalidatePath('/cart')
-    return { message: 'Item removed from cart' }
+    return { message: 'useless here cause of revalidatePath' } // useless here cause of revalidatePath and the fact that FormContainer is not rendered again
   } catch (error) {
     return renderError(error)
   }

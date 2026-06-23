@@ -26,12 +26,6 @@ export default function DeleteActionButton({
     message: '',
   })
 
-  useEffect(() => {
-    if (state.message) {
-      toast(state.message)
-    }
-  }, [state])
-
   return (
     <Button
       type="submit"

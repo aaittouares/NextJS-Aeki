@@ -12,6 +12,7 @@ import SubmitReview from '@/features/create-review/ui/SubmitReview'
 import ProductReviews from '@/widgets/product-reviews/ui/ProductReviews'
 
 import { auth } from '@clerk/nextjs/server'
+import CookieToastListener from '@/shared/ui/CookieToastListener'
 
 export async function SingleProductPage({
   params,
@@ -58,6 +59,7 @@ export async function SingleProductPage({
         </div>
       </div>
 
+      <CookieToastListener />
       <ProductReviews productId={productId} />
       {reviewDoesNotExist && <SubmitReview productId={productId} />}
     </section>

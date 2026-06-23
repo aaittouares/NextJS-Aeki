@@ -7,6 +7,7 @@ import {
   deleteProduct,
   fetchAllProducts,
 } from '@/entities/product/api/product.prisma.repository'
+import { cookies } from 'next/headers'
 
 export const getAdminProductsAction = async () => {
   await getAdminUser()
@@ -26,8 +27,10 @@ export const deleteProductAction = async (prevState: {
 
     await deleteImage(product.image)
 
+    const cookieStore = await cookies()
+    cookieStore.set('toast', 'product deleted')
     revalidatePath('/admin/products')
-    return { itemId: '', message: 'product deleted' }
+    return { itemId: '', message: 'useless here cause of revalidate' }
   } catch (err) {
     const error = await renderError(err)
 

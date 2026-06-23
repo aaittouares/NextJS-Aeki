@@ -1,4 +1,4 @@
-import { deleteProductAction } from '../model/actions'
+import { deleteProductAction } from '../model/admin-actions'
 
 import DeleteActionButton from '@/shared/ui/DeleteActionButton'
 

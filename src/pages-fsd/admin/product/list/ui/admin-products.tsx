@@ -10,15 +10,22 @@ import {
   Table,
 } from '@/shared/ui/shadcn/table'
 import Link from 'next/link'
-import { getAdminProductsAction } from '../model/actions'
+import { getAdminProductsAction } from '../model/admin-actions'
 import DeleteProduct from './DeleteProduct'
 
 import { LuPen } from 'react-icons/lu'
 import { Button } from '@/shared/ui/shadcn/button'
+import CookieToastListener from '@/shared/ui/CookieToastListener'
 
 export async function AdminProductsPage() {
   const items = await getAdminProductsAction()
-  if (items.length === 0) return <EmptyList />
+  if (items.length === 0)
+    return (
+      <>
+        <EmptyList />
+        <CookieToastListener />
+      </>
+    )
   return (
     <section>
       <Table>
@@ -66,6 +73,7 @@ export async function AdminProductsPage() {
           })}
         </TableBody>
       </Table>
+      <CookieToastListener />
     </section>
   )
 }

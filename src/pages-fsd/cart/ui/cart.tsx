@@ -7,6 +7,7 @@ import { auth } from '@clerk/nextjs/server'
 import { redirect } from 'next/navigation'
 import CartItemsList from './CartItemsList'
 import CartTotals from './CartTotals'
+import CookieToastListener from '@/shared/ui/CookieToastListener'
 
 export async function CartPage() {
   const { userId } = await auth()
@@ -15,7 +16,12 @@ export async function CartPage() {
   const cartItems = await getCartItems(cart.id)
 
   if (cartItems.length === 0) {
-    return <SectionTitle text="Empty cart" />
+    return (
+      <>
+        <SectionTitle text="Empty cart" />
+        <CookieToastListener />
+      </>
+    )
   }
   return (
     <>
@@ -28,6 +34,7 @@ export async function CartPage() {
           <CartTotals cart={cart} />
         </div>
       </div>
+      <CookieToastListener />
     </>
   )
 }

@@ -4,6 +4,7 @@ import { deleteReviewByIdAndUser } from '@/entities/review/api/review.prisma.rep
 
 import { getAuthUser, renderError } from '@/shared/lib/helpers'
 import { revalidatePath } from 'next/cache'
+import { cookies } from 'next/headers'
 
 export const deleteReviewAction = async (prevState: {
   itemId: string
@@ -15,8 +16,11 @@ export const deleteReviewAction = async (prevState: {
   try {
     await deleteReviewByIdAndUser(itemId, user.id)
 
+    const cookieStore = await cookies()
+    cookieStore.set('toast', 'Review deleted successfully')
+
     revalidatePath('/reviews')
-    return { itemId: '', message: 'Review deleted successfully' }
+    return { itemId: '', message: 'Useless Here cause of revalidatepath' }
   } catch (err) {
     const error = await renderError(err)
 

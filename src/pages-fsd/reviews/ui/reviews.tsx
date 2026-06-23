@@ -2,6 +2,7 @@ import ReviewCard from '@/entities/review/ui/ReviewCard'
 import DeleteReview from '@/features/delete-review/ui/DeleteReviewButton'
 import SectionTitle from '@/shared/ui/SectionTitle'
 import { getUserReviews } from '../model/reviews.actions'
+import CookieToastListener from '@/shared/ui/CookieToastListener'
 
 export async function ReviewsPage() {
   const reviews = await getUserReviews()
@@ -28,6 +29,7 @@ export async function ReviewsPage() {
           )
         })}
       </section>
+      <CookieToastListener />
     </>
   )
 }
