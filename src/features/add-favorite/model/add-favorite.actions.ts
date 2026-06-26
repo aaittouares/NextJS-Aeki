@@ -5,11 +5,12 @@ import {
   deleteFavoriteById,
   fetchFirstFavoriteByProductIdAndUserId,
 } from '@/entities/favorite/api/favorite.prisma.repository'
-import { getAuthUser, renderError } from '@/shared/lib/helpers'
+import { userGuard } from '@/shared/lib/guards'
+import { renderError } from '@/shared/lib/render-error'
 import { revalidatePath } from 'next/cache'
 
 export const findFavoriteId = async ({ productId }: { productId: string }) => {
-  const user = await getAuthUser()
+  const user = await userGuard()
   const favorite = await fetchFirstFavoriteByProductIdAndUserId({
     productId,
     userId: user.id,
@@ -23,7 +24,7 @@ export const toggleFavoriteAction = async (prevState: {
   pathname: string
   message: string
 }) => {
-  const user = await getAuthUser()
+  const user = await userGuard()
   let { productId, favoriteId, pathname } = prevState
   try {
     if (favoriteId) {

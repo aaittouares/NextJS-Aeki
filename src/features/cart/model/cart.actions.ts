@@ -13,7 +13,8 @@ import {
 } from '@/entities/cart/api/cart.prisma.repository'
 import { fetchSingleProduct } from '@/entities/product/api/product.prisma.repository'
 import { Cart } from '@/shared/api/prisma/generated/client'
-import { getAuthUser, renderError } from '@/shared/lib/helpers'
+import { userGuard } from '@/shared/lib/guards'
+import { renderError } from '@/shared/lib/render-error'
 import { auth } from '@clerk/nextjs/server'
 import { revalidatePath } from 'next/cache'
 import { cookies } from 'next/headers'
@@ -72,7 +73,7 @@ export const updateCartItemAction = async ({
   amount: number
   cartItemId: string
 }) => {
-  const user = await getAuthUser()
+  const user = await userGuard()
 
   try {
     await updateCartItemAmount(cartItemId, amount)
@@ -120,7 +121,7 @@ export const updateCart = async (cart: Cart) => {
 }
 
 export const addToCartAction = async (prevState: any, formData: FormData) => {
-  const user = await getAuthUser()
+  const user = await userGuard()
   try {
     const productId = formData.get('productId') as string
     const amount = Number(formData.get('amount'))
@@ -140,7 +141,7 @@ export const removeCartItemAction = async (
   prevState: any,
   formData: FormData,
 ) => {
-  const user = await getAuthUser()
+  const user = await userGuard()
   try {
     const cartItemId = formData.get('id') as string
     const cart = await getOrCreateCart({

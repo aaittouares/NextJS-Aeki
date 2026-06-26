@@ -2,15 +2,16 @@
 
 import { revalidatePath } from 'next/cache'
 import { deleteImage } from '@/entities/image/api/image.repository'
-import { getAdminUser, renderError } from '@/shared/lib/helpers'
+import { renderError } from '@/shared/lib/render-error'
 import {
   deleteProduct,
   fetchAllProducts,
 } from '@/entities/product/api/product.prisma.repository'
 import { cookies } from 'next/headers'
+import { adminGuard } from '@/shared/lib/guards'
 
 export const getAdminProductsAction = async () => {
-  await getAdminUser()
+  await adminGuard()
 
   return await fetchAllProducts()
 }
@@ -20,7 +21,7 @@ export const deleteProductAction = async (prevState: {
   message: string
 }) => {
   const { itemId } = prevState
-  getAdminUser()
+  adminGuard()
 
   try {
     const product = await deleteProduct(itemId)

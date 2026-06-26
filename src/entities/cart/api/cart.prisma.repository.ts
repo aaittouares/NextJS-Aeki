@@ -35,6 +35,14 @@ export const createCart = async (userId: string) => {
   return cart
 }
 
+export const deleteCart = async (cartId: string) => {
+  await prisma.cart.delete({
+    where: {
+      id: cartId,
+    },
+  })
+}
+
 export const updateCartValue = async (
   cartId: string,
   data: {

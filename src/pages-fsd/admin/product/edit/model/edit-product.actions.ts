@@ -8,13 +8,14 @@ import {
   updateProductImageUrl,
 } from '@/entities/product/api/product.prisma.repository'
 import { productSchema } from '@/entities/product/model/product.schema'
-import { getAdminUser, getAuthUser, renderError } from '@/shared/lib/helpers'
+import { adminGuard } from '@/shared/lib/guards'
+import { renderError } from '@/shared/lib/render-error'
 import { validateWithZodSchema } from '@/shared/lib/validate-with-zod-schema'
 import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
 
 export const getAdminSingleProductAction = async (productId: string) => {
-  await getAdminUser()
+  await adminGuard()
 
   const product = await fetchSingleProduct(productId)
 
@@ -26,7 +27,7 @@ export const updateProductAction = async (
   prevState: any,
   formData: FormData,
 ) => {
-  await getAdminUser()
+  await adminGuard()
   try {
     const productId = formData.get('id') as string
     const rawData = Object.fromEntries(formData)
@@ -46,7 +47,7 @@ export const updateProductImageAction = async (
   prevState: any,
   formData: FormData,
 ) => {
-  await getAuthUser()
+  await adminGuard()
   try {
     const image = formData.get('image') as File
     const productId = formData.get('id') as string

@@ -1,10 +1,10 @@
 'use server'
 
 import { fetchProductReviewsByUser } from '@/entities/review/api/review.prisma.repository'
-import { getAuthUser } from '@/shared/lib/helpers'
+import { userGuard } from '@/shared/lib/guards'
 
 export const getUserReviews = async () => {
-  const user = await getAuthUser()
+  const user = await userGuard()
 
   const reviews = await fetchProductReviewsByUser(user.id)
   return reviews

@@ -1,4 +1,4 @@
-import { FormResponse } from '@/shared/api/action-function.type'
+import { createOrderAction } from '@/features/order/model/order.actions'
 import { Cart } from '@/shared/api/prisma/generated/client'
 import { formatCurrency } from '@/shared/lib/format-currency'
 import FormContainer from '@/shared/ui/form/FormContainer'
@@ -8,14 +8,6 @@ import { Separator } from '@base-ui/react'
 
 function CartTotals({ cart }: { cart: Cart }) {
   const { cartTotal, shipping, tax, orderTotal } = cart
-
-  async function createOrderAction(
-    prevState: FormResponse,
-    formData: FormData,
-  ): Promise<{ message: string }> {
-    'use server'
-    throw new Error('Function not implemented.')
-  }
 
   return (
     <div>

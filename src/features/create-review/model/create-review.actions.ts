@@ -2,7 +2,8 @@
 
 import { createReview } from '@/entities/review/api/review.prisma.repository'
 import { reviewSchema } from '@/entities/review/model/review.schema'
-import { getAuthUser, renderError } from '@/shared/lib/helpers'
+import { userGuard } from '@/shared/lib/guards'
+import { renderError } from '@/shared/lib/render-error'
 import { validateWithZodSchema } from '@/shared/lib/validate-with-zod-schema'
 import { revalidatePath } from 'next/cache'
 import { cookies } from 'next/headers'
@@ -11,7 +12,7 @@ export const createReviewAction = async (
   prevState: any,
   formData: FormData,
 ) => {
-  const user = await getAuthUser()
+  const user = await userGuard()
   try {
     const rawData = Object.fromEntries(formData)
 
