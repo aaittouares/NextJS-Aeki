@@ -1,1 +1,1 @@
-export { SingleProductPage as default } from '@/pages-fsd/product/detail'
+export { SingleProductPage as default } from '@/product'

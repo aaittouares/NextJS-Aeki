@@ -1,10 +1,10 @@
 import EmptyList from '@/shared/ui/EmptyList'
 import SectionTitle from '@/shared/ui/SectionTitle'
-import ProductsGrid from '@/widgets/products-grid/ui/ProductsGrid'
-import { fetchFeaturedProducts } from '../model/home.actions'
+import ProductsGrid from '../widgets/ProductsGrid'
+import { getFeaturedProducts } from '../actions/product-featured.actions'
 
 async function FeaturedProducts() {
-  const products = await fetchFeaturedProducts()
+  const products = await getFeaturedProducts()
   if (products.length === 0)
     return (
       <section className="pt-24">

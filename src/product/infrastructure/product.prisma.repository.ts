@@ -11,6 +11,15 @@ export const fetchAllProducts = async () => {
   return products
 }
 
+export const fetchFeaturedProducts = async () => {
+  const products = await prisma.product.findMany({
+    where: {
+      featured: true,
+    },
+  })
+  return products
+}
+
 export const fetchProductsBySearch = async ({
   search = '',
 }: {

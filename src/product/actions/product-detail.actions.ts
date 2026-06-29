@@ -1,6 +1,6 @@
 'use server'
 
-import { fetchSingleProduct } from '@/entities/product/api/product.prisma.repository'
+import { fetchSingleProduct } from '@/product/infrastructure/product.prisma.repository'
 import {
   findFirstReview,
   groupReviewsByProduct,

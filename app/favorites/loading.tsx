@@ -1,6 +1,4 @@
-'use client'
-
-import LoadingProductsContainer from '@/widgets/products-grid/ui/LoadingProductsContainer'
+import { LoadingProductsContainer } from '@/product'
 
 function loading() {
   return <LoadingProductsContainer />

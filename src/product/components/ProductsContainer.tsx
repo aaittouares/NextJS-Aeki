@@ -1,10 +1,10 @@
-import { Button } from '@/shared/ui/shadcn/button'
-import { Separator } from '@/shared/ui/shadcn/separator'
-import { fetchProductsBySearch } from '@/entities/product/api/product.prisma.repository'
-import ProductsGrid from '@/widgets/products-grid/ui/ProductsGrid'
 import Link from 'next/link'
 import { LuLayoutGrid, LuList } from 'react-icons/lu'
+import { Button } from '@/shared/ui/shadcn/button'
+import { Separator } from '@/shared/ui/shadcn/separator'
 import ProductsList from './ProductsList'
+import ProductsGrid from '../widgets/ProductsGrid'
+import { getProductsBySearch } from '../actions/product-list.actions'
 
 async function ProductsContainer({
   layout,
@@ -13,7 +13,7 @@ async function ProductsContainer({
   layout: string
   search: string
 }) {
-  const products = await fetchProductsBySearch({ search })
+  const products = await getProductsBySearch(search)
   const totalProducts = products.length
   const searchTerm = search ? `&search=${search}` : ''
   return (

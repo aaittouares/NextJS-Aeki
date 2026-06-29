@@ -1,13 +1,13 @@
 import { formatCurrency } from '@/shared/lib/format-currency'
 import FavoriteToggleContainer from '@/features/add-favorite/ui/FavoriteToggleContainer'
 import Image from 'next/image'
-import BreadCrumbs from './BreadCrumbs'
+import ProductBreadCrumbs from '../components/ProductBreadCrumbs'
 import AddToCart from '@/features/cart/ui/AddToCart'
-import ProductRating from './ProductRatings'
+import ProductRating from '../components/ProductRatings'
 import {
   getSingleProductAction,
   findExistingReview,
-} from '../model/product-detail.actions'
+} from '../actions/product-detail.actions'
 import SubmitReview from '@/features/create-review/ui/SubmitReview'
 import ProductReviews from '@/widgets/product-reviews/ui/ProductReviews'
 
@@ -30,7 +30,7 @@ export async function SingleProductPage({
 
   return (
     <section>
-      <BreadCrumbs name={product.name} />
+      <ProductBreadCrumbs name={product.name} />
       <div className="mt-6 grid gap-y-8 lg:grid-cols-2 lg:gap-x-16">
         {/* IMAGE FIRST COL */}
         <div className="relative h-full">

@@ -1,5 +1,5 @@
 import { FaStar } from 'react-icons/fa'
-import { getProductRating } from '../model/product-detail.actions'
+import { getProductRating } from '../actions/product-detail.actions'
 
 async function ProductRating({ productId }: { productId: string }) {
   const { rating, count } = await getProductRating(productId)

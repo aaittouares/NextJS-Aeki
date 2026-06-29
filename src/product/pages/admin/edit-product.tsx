@@ -8,7 +8,7 @@ import {
   getAdminSingleProductAction,
   updateProductAction,
   updateProductImageAction,
-} from '../model/edit-product.actions'
+} from '../../actions/product-admin-actions'
 import ImageInputContainer from '@/entities/image/ui/UpdateImageContainer'
 
 export async function EditProductPage({

@@ -7,7 +7,7 @@ import {
   BreadcrumbPage,
 } from '@/shared/ui/shadcn/breadcrumb'
 
-function BreadCrumbs({ name }: { name: string }) {
+function ProductBreadCrumbs({ name }: { name: string }) {
   return (
     <Breadcrumb>
       <BreadcrumbList>
@@ -32,4 +32,4 @@ function BreadCrumbs({ name }: { name: string }) {
     </Breadcrumb>
   )
 }
-export default BreadCrumbs
+export default ProductBreadCrumbs

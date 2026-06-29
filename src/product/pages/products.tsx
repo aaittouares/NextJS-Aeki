@@ -1,4 +1,4 @@
-import ProductsContainer from './ProductsContainer'
+import ProductsContainer from '../components/ProductsContainer'
 
 export async function ProductsPage({
   searchParams,

@@ -1,7 +1,6 @@
 import { Suspense } from 'react'
-import FeaturedProducts from './FeaturedProducts'
 import Hero from './Hero'
-import LoadingProductsContainer from '@/widgets/products-grid/ui/LoadingProductsContainer'
+import { LoadingProductsContainer, FeaturedProducts } from '@/product'
 
 export function HomePage() {
   return (

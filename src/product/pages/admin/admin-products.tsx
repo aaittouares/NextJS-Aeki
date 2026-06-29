@@ -10,8 +10,8 @@ import {
   Table,
 } from '@/shared/ui/shadcn/table'
 import Link from 'next/link'
-import { getAdminProductsAction } from '../model/admin-actions'
-import DeleteProduct from './DeleteProduct'
+import { getAdminProductsAction } from '../../actions/product-admin-actions'
+import DeleteProduct from '../../components/DeleteProduct'
 
 import { LuPen } from 'react-icons/lu'
 import { Button } from '@/shared/ui/shadcn/button'
