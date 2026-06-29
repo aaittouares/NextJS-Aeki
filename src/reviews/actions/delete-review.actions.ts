@@ -1,10 +1,11 @@
 'use server'
 
-import { deleteReviewByIdAndUser } from '@/reviews/infrastructure/review.prisma.repository'
-import { userGuard } from '@/shared/lib/guards'
-import { renderError } from '@/shared/lib/render-error'
 import { revalidatePath } from 'next/cache'
 import { cookies } from 'next/headers'
+import { userGuard } from '@/shared/lib/guards'
+import { renderError } from '@/shared/lib/render-error'
+
+import { deleteReviewByIdAndUser } from '../infrastructure/review.prisma.repository'
 
 export const deleteReviewAction = async (prevState: {
   itemId: string

@@ -1,11 +1,11 @@
 import type { Metadata } from 'next'
 import { Geist, Geist_Mono, Figtree } from 'next/font/google'
-import '@/app/styles/globals.css'
 import { ClerkProvider } from '@clerk/nextjs'
 import { cn } from '@/shared/lib/shadcn/utils'
 import Container from '@/shared/ui/Container'
-import Navbar from '@/widgets/navbar/ui/Navbar'
 import Providers from '@/app/providers/providers'
+import '@/app/styles/globals.css'
+import { Navbar } from '@/app/navbar'
 
 const figtree = Figtree({ subsets: ['latin'], variable: '--font-sans' })
 

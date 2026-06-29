@@ -1,6 +1,6 @@
-import { Button } from '@/shared/ui/shadcn/button'
 import Link from 'next/link'
 import { LuShoppingCart } from 'react-icons/lu'
+import { Button } from '@/shared/ui/shadcn/button'
 import { getNumberOfCartItems } from '../actions/cart.actions'
 
 async function CartButton() {

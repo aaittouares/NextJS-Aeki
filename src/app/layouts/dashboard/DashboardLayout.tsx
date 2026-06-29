@@ -1,5 +1,5 @@
 import { Separator } from '@/shared/ui/shadcn/separator'
-import Sidebar from '@/widgets/admin/ui/SideBar'
+import Sidebar from './SideBar'
 
 export function DashboardLayout({ children }: { children: React.ReactNode }) {
   return (

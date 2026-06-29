@@ -10,8 +10,8 @@ import {
   getCartWithNumItemsInCart,
   updateCartItemAmount,
   updateCartValue,
-} from '@/cart/infrastructure/cart.prisma.repository'
-import { fetchSingleProduct } from '@/products/infrastructure/product.prisma.repository'
+} from '../infrastructure/cart.prisma.repository'
+import { fetchSingleProduct } from '@/products'
 
 import { Cart } from '@/shared/api/prisma/generated/client'
 import { userGuard } from '@/shared/lib/guards'

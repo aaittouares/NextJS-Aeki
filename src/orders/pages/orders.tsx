@@ -1,4 +1,4 @@
-import { getUserOrders } from '@/orders/actions/order.actions'
+import { getUserOrders } from '../actions/order.actions'
 import { formatCurrency } from '@/shared/lib/format-currency'
 import { formatDate } from '@/shared/lib/format-date'
 import SectionTitle from '@/shared/ui/SectionTitle'

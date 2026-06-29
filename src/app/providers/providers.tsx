@@ -1,7 +1,7 @@
 'use client'
 
 import { Toaster } from '@/shared/ui/shadcn/sonner'
-import { ThemeProvider } from '@/app/providers/theme-provider'
+import { ThemeProvider } from './theme-provider'
 
 function Providers({ children }: { children: React.ReactNode }) {
   return (

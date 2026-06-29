@@ -1,6 +1,7 @@
-import { formatCurrency } from '@/shared/lib/format-currency'
 import Image from 'next/image'
 import Link from 'next/link'
+import { formatCurrency } from '@/shared/lib/format-currency'
+
 export const FirstColumn = ({
   name,
   image,

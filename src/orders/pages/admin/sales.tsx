@@ -1,4 +1,4 @@
-import { getAdminOrders } from '@/orders/actions/order.actions'
+import { getAdminOrders } from '../../actions/order.actions'
 import { formatCurrency } from '@/shared/lib/format-currency'
 import { formatDate } from '@/shared/lib/format-date'
 import {

@@ -1,12 +1,13 @@
 'use server'
 
-import { createReview } from '@/reviews/infrastructure/review.prisma.repository'
-import { reviewSchema } from '@/reviews/validation/review.schema'
+import { revalidatePath } from 'next/cache'
+import { cookies } from 'next/headers'
 import { userGuard } from '@/shared/lib/guards'
 import { renderError } from '@/shared/lib/render-error'
 import { validateWithZodSchema } from '@/shared/lib/validate-with-zod-schema'
-import { revalidatePath } from 'next/cache'
-import { cookies } from 'next/headers'
+
+import { createReview } from '../infrastructure/review.prisma.repository'
+import { reviewSchema } from '../validation/review.schema'
 
 export const createReviewAction = async (
   prevState: any,

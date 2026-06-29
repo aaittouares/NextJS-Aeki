@@ -1,1 +1,1 @@
-export { AboutPage as default } from '@/pages-fsd/about'
+export { AboutPage as default } from '@/simple-pages/about'

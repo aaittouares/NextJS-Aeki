@@ -1,8 +1,8 @@
-import DeleteReview from '@/reviews/components/DeleteReviewButton'
 import SectionTitle from '@/shared/ui/SectionTitle'
-import { getUserReviews } from '../actions/reviews.actions'
 import CookieToastListener from '@/shared/ui/CookieToastListener'
+import { getUserReviews } from '../actions/reviews.actions'
 import ReviewCard from '../components/ReviewCard'
+import DeleteReview from '../components/DeleteReviewButton'
 
 export async function ReviewsPage() {
   const reviews = await getUserReviews()

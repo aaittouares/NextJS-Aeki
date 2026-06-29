@@ -8,7 +8,7 @@ import {
   DropdownMenuItem,
 } from '@/shared/ui/shadcn/dropdown-menu'
 
-import { SunIcon, MoonIcon, Sun03Icon } from '@hugeicons/core-free-icons'
+import { SunIcon, MoonIcon } from '@hugeicons/core-free-icons'
 import { HugeiconsIcon } from '@hugeicons/react'
 import { useTheme } from 'next-themes'
 

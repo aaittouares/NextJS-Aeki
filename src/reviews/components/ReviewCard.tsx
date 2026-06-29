@@ -1,7 +1,7 @@
-import Rating from './Rating'
-import Comment from './Comment'
 import Image from 'next/image'
 import { Card, CardHeader, CardContent } from '@/shared/ui/shadcn/card'
+import Rating from './Rating'
+import Comment from './Comment'
 
 type ReviewCardProps = {
   reviewInfo: {

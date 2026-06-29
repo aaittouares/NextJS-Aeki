@@ -1,10 +1,7 @@
 'use server'
 
-import { fetchSingleProduct } from '@/products/infrastructure/product.prisma.repository'
-import {
-  findFirstReview,
-  groupReviewsByProduct,
-} from '@/reviews/infrastructure/review.prisma.repository'
+import { fetchSingleProduct } from '../infrastructure/product.prisma.repository'
+import { findFirstReview, groupReviewsByProduct } from '@/reviews'
 import { redirect } from 'next/navigation'
 
 export const getSingleProductAction = async (productId: string) => {

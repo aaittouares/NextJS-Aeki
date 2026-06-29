@@ -1,13 +1,14 @@
 'use client'
 
-import FormContainer from '@/shared/ui/form/FormContainer'
-import { Button } from '@/shared/ui/shadcn/button'
-import { Card } from '@/shared/ui/shadcn/card'
-import RatingInput from './RatingInput'
-import TextAreaInput from '@/shared/ui/form/TextAreaInput'
-import SubmitButton from '@/shared/ui/form/SubmitButton'
 import { useState } from 'react'
 import { useUser } from '@clerk/nextjs'
+import { Button } from '@/shared/ui/shadcn/button'
+import { Card } from '@/shared/ui/shadcn/card'
+import FormContainer from '@/shared/ui/form/FormContainer'
+import TextAreaInput from '@/shared/ui/form/TextAreaInput'
+import SubmitButton from '@/shared/ui/form/SubmitButton'
+import RatingInput from './RatingInput'
+
 import { createReviewAction } from '../actions/create-review.actions'
 
 function SubmitReview({ productId }: { productId: string }) {

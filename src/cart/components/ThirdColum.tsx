@@ -1,16 +1,14 @@
 'use client'
 
+import { useState } from 'react'
+import { toast } from 'sonner'
+import FormContainer from '@/shared/ui/form/FormContainer'
+import SubmitButton from '@/shared/ui/form/SubmitButton'
 import {
   removeCartItemAction,
   updateCartItemAction,
-} from '@/cart/actions/cart.actions'
-import SelectProductAmount, {
-  Mode,
-} from '@/cart/components/SelectProductAmount'
-import FormContainer from '@/shared/ui/form/FormContainer'
-import SubmitButton from '@/shared/ui/form/SubmitButton'
-import { useState } from 'react'
-import { toast } from 'sonner'
+} from '../actions/cart.actions'
+import SelectProductAmount, { Mode } from './SelectProductAmount'
 
 function ThirdColumn({ quantity, id }: { quantity: number; id: string }) {
   const [amount, setAmount] = useState(quantity)

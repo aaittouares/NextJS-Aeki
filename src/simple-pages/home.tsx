@@ -1,5 +1,5 @@
 import { Suspense } from 'react'
-import Hero from './Hero'
+import Hero from './components/Hero'
 import { LoadingProductsContainer, FeaturedProducts } from '@/products'
 
 export function HomePage() {

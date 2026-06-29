@@ -1,12 +1,12 @@
 'use client'
 
-import { ActionFunction } from '@/shared/api/action-function.type'
 import { useState } from 'react'
 import Image from 'next/image'
 import { Button } from '@/shared/ui/shadcn/button'
+import { ActionFunction } from '@/shared/api/action-function.type'
 import FormContainer from '@/shared/ui/form/FormContainer'
-import ImageInput from './ImageInput'
 import SubmitButton from '@/shared/ui/form/SubmitButton'
+import ImageInput from './ImageInput'
 
 type ImageInputContainerProps = {
   image: string
@@ -16,7 +16,7 @@ type ImageInputContainerProps = {
   children?: React.ReactNode
 }
 
-function ImageInputContainer(props: ImageInputContainerProps) {
+function UpdateImageContainer(props: ImageInputContainerProps) {
   const { image, name, action, text } = props
   const [isUpdateFormVisible, setUpdateFormVisible] = useState(false)
 
@@ -49,4 +49,4 @@ function ImageInputContainer(props: ImageInputContainerProps) {
     </div>
   )
 }
-export default ImageInputContainer
+export default UpdateImageContainer

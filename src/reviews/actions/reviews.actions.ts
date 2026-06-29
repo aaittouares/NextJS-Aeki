@@ -1,7 +1,7 @@
 'use server'
 
-import { fetchProductReviewsByUser } from '@/reviews/infrastructure/review.prisma.repository'
 import { userGuard } from '@/shared/lib/guards'
+import { fetchProductReviewsByUser } from '../infrastructure/review.prisma.repository'
 
 export const getUserReviews = async () => {
   const user = await userGuard()

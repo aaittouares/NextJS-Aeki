@@ -1,11 +1,11 @@
 'use client'
 
+import { useState } from 'react'
+import { SignInButton, useAuth } from '@clerk/nextjs'
+import { Button } from '@/shared/ui/shadcn/button'
 import FormContainer from '@/shared/ui/form/FormContainer'
 import SubmitButton from '@/shared/ui/form/SubmitButton'
-import { SignInButton, useAuth } from '@clerk/nextjs'
-import { useState } from 'react'
 import SelectProductAmount, { Mode } from './SelectProductAmount'
-import { Button } from '@/shared/ui/shadcn/button'
 import { addToCartAction } from '../actions/cart.actions'
 
 function AddToCart({ productId }: { productId: string }) {

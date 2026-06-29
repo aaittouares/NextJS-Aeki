@@ -9,7 +9,7 @@ import {
   updateProductAction,
   updateProductImageAction,
 } from '../../actions/product-admin-actions'
-import ImageInputContainer from '@/image/components/UpdateImageContainer'
+import { UpdateImageContainer } from '@/image'
 
 export async function EditProductPage({
   params,
@@ -24,7 +24,7 @@ export async function EditProductPage({
       <h1 className="text-2xl font-semibold mb-8 capitalize">update product</h1>
       <div className="border p-8 rounded-md">
         {/* Image Input Container */}
-        <ImageInputContainer
+        <UpdateImageContainer
           action={updateProductImageAction}
           name={name}
           image={product.image}
@@ -32,7 +32,7 @@ export async function EditProductPage({
         >
           <input type="hidden" name="id" value={productId} />
           <input type="hidden" name="url" value={product.image} />
-        </ImageInputContainer>
+        </UpdateImageContainer>
         <FormContainer action={updateProductAction}>
           <div className="grid gap-4 md:grid-cols-2 my-4">
             <input type="hidden" name="id" value={productId} />

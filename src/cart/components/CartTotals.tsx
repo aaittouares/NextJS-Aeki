@@ -1,10 +1,12 @@
-import { createOrderAction } from '@/orders'
-import { Cart } from '@/shared/api/prisma/generated/client'
+import { Separator } from '@base-ui/react'
+import { Card, CardTitle } from '@/shared/ui/shadcn/card'
+
 import { formatCurrency } from '@/shared/lib/format-currency'
 import FormContainer from '@/shared/ui/form/FormContainer'
 import SubmitButton from '@/shared/ui/form/SubmitButton'
-import { Card, CardTitle } from '@/shared/ui/shadcn/card'
-import { Separator } from '@base-ui/react'
+import { createOrderAction } from '@/orders'
+
+import { Cart } from '@/shared/api/prisma/generated/client'
 
 function CartTotals({ cart }: { cart: Cart }) {
   const { cartTotal, shipping, tax, orderTotal } = cart

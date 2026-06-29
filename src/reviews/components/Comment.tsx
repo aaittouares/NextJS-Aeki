@@ -1,6 +1,6 @@
 'use client'
-import { Button } from '@/shared/ui/shadcn/button'
 import { useState } from 'react'
+import { Button } from '@/shared/ui/shadcn/button'
 
 function Comment({ comment }: { comment: string }) {
   const [isExpanded, setIsExpanded] = useState(false)

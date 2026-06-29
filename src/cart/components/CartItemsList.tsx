@@ -1,7 +1,6 @@
-import { CartItemWithProduct } from '@/cart/types/types'
-
-import { FirstColumn, SecondColumn, FourthColumn } from './CartItemColums'
 import { Card } from '@/shared/ui/shadcn/card'
+import { CartItemWithProduct } from '../types/types'
+import { FirstColumn, SecondColumn, FourthColumn } from './CartItemColums'
 import ThirdColumn from './ThirdColum'
 
 function CartItemsList({ cartItems }: { cartItems: CartItemWithProduct[] }) {
