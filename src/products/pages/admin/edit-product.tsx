@@ -9,7 +9,7 @@ import {
   updateProductAction,
   updateProductImageAction,
 } from '../../actions/product-admin-actions'
-import ImageInputContainer from '@/entities/image/ui/UpdateImageContainer'
+import ImageInputContainer from '@/image/components/UpdateImageContainer'
 
 export async function EditProductPage({
   params,

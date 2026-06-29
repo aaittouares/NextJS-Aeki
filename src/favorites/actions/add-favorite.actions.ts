@@ -1,13 +1,14 @@
 'use server'
 
+import { revalidatePath } from 'next/cache'
+import { userGuard } from '@/shared/lib/guards'
+import { renderError } from '@/shared/lib/render-error'
+
 import {
   createFavorite,
   deleteFavoriteById,
   fetchFirstFavoriteByProductIdAndUserId,
-} from '@/entities/favorite/api/favorite.prisma.repository'
-import { userGuard } from '@/shared/lib/guards'
-import { renderError } from '@/shared/lib/render-error'
-import { revalidatePath } from 'next/cache'
+} from '../infrastructure/favorite.prisma.repository'
 
 export const findFavoriteId = async ({ productId }: { productId: string }) => {
   const user = await userGuard()

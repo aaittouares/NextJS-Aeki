@@ -1,19 +1,17 @@
-import { formatCurrency } from '@/shared/lib/format-currency'
-import FavoriteToggleContainer from '@/features/add-favorite/ui/FavoriteToggleContainer'
 import Image from 'next/image'
+import { auth } from '@clerk/nextjs/server'
+import CookieToastListener from '@/shared/ui/CookieToastListener'
+import { formatCurrency } from '@/shared/lib/format-currency'
 import ProductBreadCrumbs from '../components/ProductBreadCrumbs'
-import AddToCart from '@/cart/components/AddToCart'
 import ProductRating from '../components/ProductRatings'
 import {
   getSingleProductAction,
   findExistingReview,
 } from '../actions/product-detail.actions'
 
-import ProductReviews from '@/reviews/components/ProductReviews'
-
-import { auth } from '@clerk/nextjs/server'
-import CookieToastListener from '@/shared/ui/CookieToastListener'
-import SubmitReview from '@/reviews/components/SubmitReview'
+import { FavoriteToggleContainer } from '@/favorites'
+import { SubmitReview, ProductReviews } from '@/reviews'
+import { AddToCart } from '@/cart'
 
 export async function SingleProductPage({
   params,

@@ -1,5 +1,6 @@
-import { formatCurrency } from '@/shared/lib/format-currency'
-import EmptyList from '@/shared/ui/EmptyList'
+import Link from 'next/link'
+import { LuPen } from 'react-icons/lu'
+import { Button } from '@/shared/ui/shadcn/button'
 import {
   TableCaption,
   TableHeader,
@@ -9,13 +10,12 @@ import {
   TableCell,
   Table,
 } from '@/shared/ui/shadcn/table'
-import Link from 'next/link'
+import { formatCurrency } from '@/shared/lib/format-currency'
+import EmptyList from '@/shared/ui/EmptyList'
+import CookieToastListener from '@/shared/ui/CookieToastListener'
+
 import { getAdminProductsAction } from '../../actions/product-admin-actions'
 import DeleteProduct from '../../components/DeleteProduct'
-
-import { LuPen } from 'react-icons/lu'
-import { Button } from '@/shared/ui/shadcn/button'
-import CookieToastListener from '@/shared/ui/CookieToastListener'
 
 export async function AdminProductsPage() {
   const items = await getAdminProductsAction()

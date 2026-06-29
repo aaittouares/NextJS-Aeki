@@ -3,12 +3,11 @@
 import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
 import { cookies } from 'next/headers'
-import { deleteImage, uploadImage } from '@/entities/image/api/image.repository'
-import { imageSchema } from '@/entities/image/model/image.schema'
 import { renderError } from '@/shared/lib/render-error'
 import { adminGuard } from '@/shared/lib/guards'
 import { FormResponse } from '@/shared/api/action-function.type'
 import { validateWithZodSchema } from '@/shared/lib/validate-with-zod-schema'
+import { deleteImage, uploadImage, imageSchema } from '@/image'
 import {
   createProduct,
   deleteProduct,

@@ -1,9 +1,9 @@
 import SectionTitle from '@/shared/ui/SectionTitle'
 import { ProductsGrid } from '@/products'
-import { fetchUserFavorites } from '../model/favorites.actions'
+import { getUserFavorites } from '../actions/favorites.actions'
 
 export async function FavoritesPage() {
-  const favorites = await fetchUserFavorites()
+  const favorites = await getUserFavorites()
   if (favorites.length === 0)
     return <SectionTitle text="You have no favorites yet." />
   return (

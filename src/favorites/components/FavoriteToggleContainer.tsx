@@ -1,9 +1,9 @@
 import { auth } from '@clerk/nextjs/server'
-import { findFavoriteId } from '../model/add-favorite.actions'
 import { SignInButton } from '@clerk/nextjs'
 import { FaRegHeart } from 'react-icons/fa'
 import { Button } from '@/shared/ui/shadcn/button'
-import FavoriteToggleButton from '@/features/add-favorite/ui/FavoriteToggleButton'
+import { findFavoriteId } from '../actions/add-favorite.actions'
+import FavoriteToggleButton from './FavoriteToggleButton'
 
 async function FavoriteToggleContainer({ productId }: { productId: string }) {
   const { userId } = await auth()

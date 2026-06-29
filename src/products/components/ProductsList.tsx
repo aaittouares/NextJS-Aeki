@@ -1,9 +1,9 @@
+import Image from 'next/image'
+import Link from 'next/link'
 import { formatCurrency } from '@/shared/lib/format-currency'
 import { Product } from '@/shared/api/prisma/generated/client'
 import { Card, CardContent } from '@/shared/ui/shadcn/card'
-import FavoriteToggleContainer from '@/features/add-favorite/ui/FavoriteToggleContainer'
-import Image from 'next/image'
-import Link from 'next/link'
+import { FavoriteToggleContainer } from '@/favorites'
 
 function ProductsList({ products }: { products: Product[] }) {
   return (

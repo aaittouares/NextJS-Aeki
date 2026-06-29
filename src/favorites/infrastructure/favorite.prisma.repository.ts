@@ -19,6 +19,18 @@ export const fetchFirstFavoriteByProductIdAndUserId = async ({
   return favorite
 }
 
+export const fetchUserFavorites = async (userId: string) => {
+  const favorites = await prisma.favorite.findMany({
+    where: {
+      clerkId: userId,
+    },
+    include: {
+      product: true,
+    },
+  })
+  return favorites
+}
+
 export const deleteFavoriteById = async (favoriteId: string) => {
   await prisma.favorite.delete({
     where: {

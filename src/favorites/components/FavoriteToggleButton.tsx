@@ -1,12 +1,13 @@
 'use client'
 
 import { usePathname } from 'next/navigation'
-import { toggleFavoriteAction } from '../model/add-favorite.actions'
 import { startTransition, useActionState, useEffect } from 'react'
-import { FaHeart, FaRegHeart } from 'react-icons/fa'
-import { Button } from '@/shared/ui/shadcn/button'
 import { ReloadIcon } from '@radix-ui/react-icons'
+import { FaHeart, FaRegHeart } from 'react-icons/fa'
 import { toast } from 'sonner'
+import { Button } from '@/shared/ui/shadcn/button'
+
+import { toggleFavoriteAction } from '../actions/add-favorite.actions'
 
 type FavoriteToggleFormProps = {
   productId: string
