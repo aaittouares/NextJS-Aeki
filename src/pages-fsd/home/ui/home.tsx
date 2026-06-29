@@ -1,6 +1,6 @@
 import { Suspense } from 'react'
 import Hero from './Hero'
-import { LoadingProductsContainer, FeaturedProducts } from '@/product'
+import { LoadingProductsContainer, FeaturedProducts } from '@/products'
 
 export function HomePage() {
   return (

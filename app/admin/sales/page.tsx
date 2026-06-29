@@ -1,1 +1,1 @@
-export { SalesPage as default } from '@/pages-fsd/admin/sales'
+export { SalesPage as default } from '@/orders'

@@ -1,1 +1,1 @@
-export { ReviewsPage as default } from '@/pages-fsd/reviews'
+export { ReviewsPage as default } from '@/reviews'

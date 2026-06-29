@@ -1,4 +1,4 @@
-import { LoadingProductsContainer } from '@/product'
+import { LoadingProductsContainer } from '@/products'
 
 function loading() {
   return <LoadingProductsContainer />

@@ -1,1 +1,1 @@
-export { EditProductPage as default } from '@/product'
+export { EditProductPage as default } from '@/products'

@@ -1,4 +1,4 @@
-import { createOrderAction } from '@/features/order/model/order.actions'
+import { createOrderAction } from '@/orders'
 import { Cart } from '@/shared/api/prisma/generated/client'
 import { formatCurrency } from '@/shared/lib/format-currency'
 import FormContainer from '@/shared/ui/form/FormContainer'

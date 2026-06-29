@@ -1,1 +1,1 @@
-export { OrdersPage as default } from '@/pages-fsd/orders'
+export { OrdersPage as default } from '@/orders'

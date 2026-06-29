@@ -1,4 +1,4 @@
-import LoadingReviews from '@/pages-fsd/reviews/ui/LoadingReviews'
+import { LoadingReviews } from '@/reviews'
 
 function loading() {
   return <LoadingReviews />

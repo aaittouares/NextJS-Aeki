@@ -1,5 +1,5 @@
 import SectionTitle from '@/shared/ui/SectionTitle'
-import { ProductsGrid } from '@/product'
+import { ProductsGrid } from '@/products'
 import { fetchUserFavorites } from '../model/favorites.actions'
 
 export async function FavoritesPage() {

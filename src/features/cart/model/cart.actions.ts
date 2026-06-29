@@ -11,7 +11,7 @@ import {
   updateCartItemAmount,
   updateCartValue,
 } from '@/entities/cart/api/cart.prisma.repository'
-import { fetchSingleProduct } from '@/product/infrastructure/product.prisma.repository'
+import { fetchSingleProduct } from '@/products/infrastructure/product.prisma.repository'
 
 import { Cart } from '@/shared/api/prisma/generated/client'
 import { userGuard } from '@/shared/lib/guards'
