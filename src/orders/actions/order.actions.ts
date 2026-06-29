@@ -1,18 +1,15 @@
 'use server'
 
-import {
-  deleteCart,
-  findCartByUser,
-} from '@/entities/cart/api/cart.prisma.repository'
+import { revalidatePath } from 'next/cache'
+import { redirect } from 'next/navigation'
+import { adminGuard, userGuard } from '@/shared/lib/guards'
+import { renderError } from '@/shared/lib/render-error'
+import { deleteCart, findCartByUser } from '@/cart'
 import {
   createOrder,
   fetchAllPaidOrders,
   fetchUserOrders,
-} from '@/orders/infrastructure/order.prisma.repository'
-import { adminGuard, userGuard } from '@/shared/lib/guards'
-import { renderError } from '@/shared/lib/render-error'
-import { revalidatePath } from 'next/cache'
-import { redirect } from 'next/navigation'
+} from '../infrastructure/order.prisma.repository'
 
 export const createOrderAction = async (prevState: any, formData: FormData) => {
   const user = await userGuard()

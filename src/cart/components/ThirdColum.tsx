@@ -3,10 +3,10 @@
 import {
   removeCartItemAction,
   updateCartItemAction,
-} from '@/features/cart/model/cart.actions'
+} from '@/cart/actions/cart.actions'
 import SelectProductAmount, {
   Mode,
-} from '@/features/cart/ui/SelectProductAmount'
+} from '@/cart/components/SelectProductAmount'
 import FormContainer from '@/shared/ui/form/FormContainer'
 import SubmitButton from '@/shared/ui/form/SubmitButton'
 import { useState } from 'react'

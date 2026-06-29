@@ -1,13 +1,10 @@
-import {
-  getCartItems,
-  getOrCreateCart,
-} from '@/features/cart/model/cart.actions'
-import SectionTitle from '@/shared/ui/SectionTitle'
 import { auth } from '@clerk/nextjs/server'
 import { redirect } from 'next/navigation'
-import CartItemsList from './CartItemsList'
-import CartTotals from './CartTotals'
+import SectionTitle from '@/shared/ui/SectionTitle'
 import CookieToastListener from '@/shared/ui/CookieToastListener'
+import { getCartItems, getOrCreateCart } from '../actions/cart.actions'
+import CartItemsList from '../components/CartItemsList'
+import CartTotals from '../components/CartTotals'
 
 export async function CartPage() {
   const { userId } = await auth()

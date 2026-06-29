@@ -6,7 +6,7 @@ import { SignInButton, useAuth } from '@clerk/nextjs'
 import { useState } from 'react'
 import SelectProductAmount, { Mode } from './SelectProductAmount'
 import { Button } from '@/shared/ui/shadcn/button'
-import { addToCartAction } from '../model/cart.actions'
+import { addToCartAction } from '../actions/cart.actions'
 
 function AddToCart({ productId }: { productId: string }) {
   const [amount, setAmount] = useState(1)

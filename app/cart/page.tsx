@@ -1,1 +1,1 @@
-export { CartPage as default } from '@/pages-fsd/cart'
+export { CartPage as default } from '@/cart'

@@ -1,7 +1,7 @@
 import { Button } from '@/shared/ui/shadcn/button'
 import Link from 'next/link'
 import { LuShoppingCart } from 'react-icons/lu'
-import { getNumberOfCartItems } from '../model/cart.actions'
+import { getNumberOfCartItems } from '../actions/cart.actions'
 
 async function CartButton() {
   const numItemsInCart = await getNumberOfCartItems()

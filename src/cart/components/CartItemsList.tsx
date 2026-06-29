@@ -1,4 +1,4 @@
-import { CartItemWithProduct } from '@/entities/cart/api/types'
+import { CartItemWithProduct } from '@/cart/types/types'
 
 import { FirstColumn, SecondColumn, FourthColumn } from './CartItemColums'
 import { Card } from '@/shared/ui/shadcn/card'
